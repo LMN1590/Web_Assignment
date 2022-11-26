@@ -57,11 +57,12 @@
       $user_id = mysqli_real_escape_string($conn, $user_id);
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
+      $news_id = $_POST['news_id'];
       $news_id = mysqli_real_escape_string($conn, $news_id);
       $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id) VALUES ('$user_id',now(),'$content', '$news_id')";
       $res = mysqli_query($conn, $query);
       if ($res) {
-        header('location: newsInfo.php');
+        header('location: newsInfo.php?news_id=' . $news_id);
       }
       mysqli_free_result($res);
     }
