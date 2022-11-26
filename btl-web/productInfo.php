@@ -6,7 +6,6 @@
     $prod_id = $_GET['prod_id'];
   }
   $query = "SELECT * FROM product WHERE id = '" . $prod_id . "'";
-  echo '<script>alert("' . $query . '")</script>';
   $res = mysqli_query($conn, $query);
   $dish = mysqli_fetch_all($res, MYSQLI_ASSOC);
   $row_cnt = $res->num_rows;
@@ -57,12 +56,10 @@
     if (isset($_POST['comment_post']) && isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
       $user_id = mysqli_real_escape_string($conn, $user_id);
-      $datetime = date('d-m-y h:i:s');
-      $datetime = mysqli_real_escape_string($conn, $datetime);
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
       $prod_id = mysqli_real_escape_string($conn, $prod_id);
-      $query = "INSERT INTO `prod_comments` (user_id, datetime, content, prod_id) VALUES ('$user_id','$datetime','$content', '$prod_id')";
+      $query = "INSERT INTO `prod_comments` (user_id, datetime, content, prod_id) VALUES ('$user_id',now(),'$content', '$prod_id')";
       $res = mysqli_query($conn, $query);
       if ($res) {
         header('location: productInfo.php');
