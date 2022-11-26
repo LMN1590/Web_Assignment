@@ -26,6 +26,7 @@
   </div>
   <!-- end nav bar --> 
     <form method="post" action="productManagement.php">
+      <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newProduct.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm sản phẩm"></a>
     </form>
     <?php
@@ -38,6 +39,7 @@
                   <th>Giá</th>
                   <th>Hình</th>
                   <th>Trạng thái (còn/hết)</th>
+                  <th>Phím tắt</th>
               </tr>
               <tbody>";
       $sql = "SELECT * from product";
@@ -58,7 +60,7 @@
                   <td>" . $img_path . "</td>
                   <td>" . $status . "</td>
                   <td>
-                    <a href='editProduct.php?id=$id&name=$name&description=$description&price=$price&img_path=$img_path&status=$status' 
+                    <a href='editProduct.php?id=$id' 
                       class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
                     <a href='deleteProduct.php?id=$id' class='btn btn-danger'>Xóa</a>
                     <a href='../productInfo.php?prod_id=$id' class='btn btn-success'>Xem</a>
