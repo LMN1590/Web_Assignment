@@ -55,8 +55,6 @@
     if ($row_cnt == 0){
       echo "<div class='alert alert-danger'>No records found.</div>";
     }
-    var_dump(isset($_POST['comment_post']));
-    var_dump(isset($_GET['comment_post']));
     if (isset($_POST['comment_post']) && isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
       $user_id = mysqli_real_escape_string($conn, $user_id);
