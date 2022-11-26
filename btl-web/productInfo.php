@@ -60,11 +60,12 @@
       $datetime = mysqli_real_escape_string($conn, $datetime);
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
+      $prod_id = $_POST['prod_id'];
       $prod_id = mysqli_real_escape_string($conn, $prod_id);
       $query = "INSERT INTO `prod_comments` (user_id, datetime, content, prod_id) VALUES ('$user_id','$datetime','$content', '$prod_id')";
       $res = mysqli_query($conn, $query);
       if ($res) {
-        header('location: productInfo.php');
+        header('location: productInfo.php?prod_id=' . $prod_id);
       }
       mysqli_free_result($res);
     }
@@ -154,7 +155,7 @@
           <div class="col-md-12 col-lg-10 col-xl-8">
             <div class="card">
               <div class="card-header py-3 border-0" style="background-color: #f8f9fa;">
-                <form action="" method="get">
+                <form action="" method="post">
                   <div class="d-flex flex-start w-100">
                     <img class="rounded-circle shadow-1-strong me-3"
                       src="img/logo.png" alt="avatar" width="40"
