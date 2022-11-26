@@ -6,7 +6,6 @@
     $prod_id = $_GET['prod_id'];
   }
   $query = "SELECT * FROM product WHERE id = '" . $prod_id . "'";
-  echo '<script>alert("' . $query . '")</script>';
   $res = mysqli_query($conn, $query);
   $dish = mysqli_fetch_all($res, MYSQLI_ASSOC);
   $row_cnt = $res->num_rows;
