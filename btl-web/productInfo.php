@@ -60,15 +60,14 @@
     if (isset($_POST['comment_post']) && isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
       $user_id = mysqli_real_escape_string($conn, $user_id);
-      $datetime = date('d-m-y h:i:s');
-      $datetime = mysqli_real_escape_string($conn, $datetime);
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
+      $prod_id = $_POST['prod_id'];
       $prod_id = mysqli_real_escape_string($conn, $prod_id);
-      $query = "INSERT INTO `prod_comments` (user_id, datetime, content, prod_id) VALUES ('$user_id','$datetime','$content', '$prod_id')";
+      $query = "INSERT INTO `prod_comments` (user_id, datetime, content, prod_id) VALUES ('$user_id',now(),'$content', '$prod_id')";
       $res = mysqli_query($conn, $query);
       if ($res) {
-        header('location: productInfo.php');
+        header('location: productInfo.php?prod_id=' . $prod_id);
       }
       mysqli_free_result($res);
     }
