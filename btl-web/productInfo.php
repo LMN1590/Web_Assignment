@@ -1,30 +1,3 @@
-<?php
-  require_once('config/config.php');
-  //select data
-  $prod_id = "";
-  if (isset($_GET['prod_id'])) {
-    $prod_id = $_GET['prod_id'];
-  }
-  else if(isset($_POST['prod_id'])){
-    $prod_id = $_POST['prod_id'];
-  }
-  $query = "SELECT * FROM product WHERE id = '" . $prod_id . "'";
-  $res = mysqli_query($conn, $query);
-  $dish = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  $row_cnt = $res->num_rows;
-  $dish1 = $dish[0];
-
-  $query1 = "SELECT * FROM prod_comments WHERE prod_id = '" . $prod_id . "'";
-  $res = mysqli_query($conn, $query1);
-  $cmts = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  $cmt_cnt = $res->num_rows;
-
-  $query2 = "SELECT id, username FROM user";
-  $res = mysqli_query($conn, $query2);
-  $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  mysqli_free_result($res);
-?> 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,11 +24,39 @@
     include($IPATH."navbar.php");?>
   </div>
   <!-- end nav bar --> 
-  
   <?php
+    
+?> 
+  <?php
+    require_once('config/config.php');
+    //select data
+    $prod_id = "";
+    if (isset($_POST['prod_id'])) {
+      $prod_id = $_POST['prod_id'];
+    }
+    elseif(isset($_GET['prod_id'])){
+      $prod_id = $_GET['prod_id'];
+    }
+    $query = "SELECT * FROM product WHERE id = '" . $prod_id . "'";
+    $res = mysqli_query($conn, $query);
+    $dish = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $row_cnt = $res->num_rows;
+    $dish1 = $dish[0];
+
+    $query1 = "SELECT * FROM prod_comments WHERE prod_id = '" . $prod_id . "'";
+    $res = mysqli_query($conn, $query1);
+    $cmts = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $cmt_cnt = $res->num_rows;
+
+    $query2 = "SELECT id, username FROM user";
+    $res = mysqli_query($conn, $query2);
+    $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    mysqli_free_result($res);
     if ($row_cnt == 0){
       echo "<div class='alert alert-danger'>No records found.</div>";
     }
+    var_dump(isset($_POST['comment_post']));
+    var_dump(isset($_GET['comment_post']));
     if (isset($_POST['comment_post']) && isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
       $user_id = mysqli_real_escape_string($conn, $user_id);
@@ -157,7 +158,7 @@
           <div class="col-md-12 col-lg-10 col-xl-8">
             <div class="card">
               <div class="card-header py-3 border-0" style="background-color: #f8f9fa;">
-                <form action="" method="post">
+                <form id="cmt" action="productInfo.php" method="post">
                   <div class="d-flex flex-start w-100">
                     <img class="rounded-circle shadow-1-strong me-3"
                       src="img/logo.png" alt="avatar" width="40"
@@ -170,7 +171,7 @@
                   </div>
                   <div class="float-end mt-2 pt-1">
                     <input type="hidden" name="prod_id" value="<?php echo $prod_id ?>"></input>
-                    <button type="submit" class="btn-orange btn btn-primary btn-sm" name="comment_post">Đăng</button>
+                    <button form="cmt" type="submit" class="btn-orange btn btn-primary btn-sm" name="comment_post" value="commentin">Đăng</button>
                     <input type="reset" class="btn-orange-out btn btn-outline-primary btn-sm" value="Hủy"></input>
                   </div>
                 </form>
