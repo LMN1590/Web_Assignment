@@ -90,10 +90,8 @@
         </div>
         <div class="row">
           <div class="col-sm-7" style="border: 1px solid black; padding: 1em 2em 0 2em; margin: 1em 2em 0 2em; font-size: 20px">
-          <p><?php echo htmlspecialchars($newspage1['content']); ?>
-          <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum consequat mi sed luctus tempus. Duis elementum dictum lacus, condimentum imperdiet urna tristique a. Fusce sollicitudin lacinia ligula, ac tincidunt sem interdum ac. Morbi molestie nisl lectus. Nam ex erat, facilisis sit amet ultrices a, bibendum vel tellus. Pellentesque sit amet sapien risus. In fringilla augue egestas tellus dapibus, et ullamcorper augue mattis. Nulla ac purus in velit blandit tempus ut sit amet nibh. Aenean malesuada, leo non lacinia vehicula, libero arcu tincidunt leo, sed semper diam enim quis dolor.
-          <br>Curabitur quis tortor suscipit, efficitur lectus eu, ultricies eros. Duis pharetra id purus a aliquet. Suspendisse potenti. Pellentesque convallis nibh vitae auctor ornare. Suspendisse luctus lectus interdum neque cursus, at rutrum augue egestas. Sed sodales ligula eget enim dapibus vestibulum. Ut auctor sit amet eros vel bibendum. Duis pretium placerat tortor nec cursus. Morbi ac arcu vitae urna scelerisque mollis hendrerit scelerisque dolor. Morbi hendrerit felis eu nulla auctor viverra.
-          <br>Nullam mattis ex quis libero vehicula, ac dignissim ipsum eleifend. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Fusce commodo porta tempor. Suspendisse eu tortor augue. Suspendisse potenti. Suspendisse sed efficitur augue. Phasellus dignissim tincidunt leo, id pellentesque orci lacinia ut. Morbi dui lacus, iaculis quis est sit amet, tincidunt ullamcorper nunc. Integer magna elit, porta eget euismod in, egestas vel augue. Sed vel libero congue, porta lorem ut, porta sem. Duis in velit tristique, pellentesque mauris fermentum, molestie nisl. Proin tempor lacinia sem.</p>
+          <p><?php echo htmlspecialchars($newspage1['content']); ?></p>
+          <p><?php echo htmlspecialchars($newspage1['contentBody']); ?></p>
           </div>
           <div class="col-sm-4" style="padding: 0 20px 0 10px; margin-top: 10px">
     <div class="row">
