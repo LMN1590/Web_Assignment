@@ -26,7 +26,7 @@
   </div>
   <!-- end nav bar --> 
     <form method="post" action="newCommmentManagement.php">
-      <!--<a href="memberManagement.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" name="display" value="Hiển thị danh sách thành viên"></a>-->
+      <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newNewsComment.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm bình luận"></a>
     </form>
     <?php
