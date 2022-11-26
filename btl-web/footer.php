@@ -19,28 +19,28 @@
         <!-- Section: Social media -->
         <div class="mb-4">
           <!-- Facebook -->
-          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/watch?v=UIp6_0kct_U" role="button">
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/gojekindonesia" role="button">
             <i class="fab fa-facebook-f"></i>
           </a>
 
           <!-- Twitter -->
-          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" role="button">
+          <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/gojekindonesia" role="button">
             <i class="fab fa-twitter"></i>
           </a>
 
           <!-- Google -->
-          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/watch?v=HAHJUtSR90g" role="button">
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.gojek.com/vn/" role="button">
             <i class="fab fa-google"></i>
           </a>
 
           <!-- Instagram -->
-          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/watch?v=V_bQNPG2OyE" role="button">
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/gojekindonesia/" role="button">
             <i class="fab fa-instagram"></i>
           </a>
 
-          <!-- Linkedin -->
-          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/watch?v=rl7ppuXMfC8" role="button">
-            <i class="fab fa-linkedin-in"></i>
+          <!-- Youtube -->
+          <a class="btn btn-outline-light btn-floating m-1" href="https://www.youtube.com/channel/UCmlKSK0OKn_B3oPwElW4n5w" role="button">
+            <i class="fab fa-youtube"></i>
           </a>
         </div>
         <div class="row">

@@ -17,13 +17,13 @@
   <nav class="my-navbar-logo navbar navbar-expand-xl navbar-dark bg-dark">
       <div class="my-container container-fluid justify-content-center">
         <a class="navbar-brand" href="index.php">
-            <img src="img/logo-name.png" width="120" height="120" class="d-inline-block align-top" alt="">
+            <img src="img/logo-name.png" width="120" height="120" class="d-inline-block align-top" alt="logo">
         </a>
       </div>
   </nav>    
-  <nav class="my-navbar navbar navbar-expand-xl navbar-dark bg-dark">
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6" style="text-align: center">
+  <nav class="my-navbar navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" style="text-align: center">
     <div class="my-container container-fluid justify-content-center">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
           <span class="navbar-toggler-icon justify-content-center"></span>
@@ -48,7 +48,7 @@
   </div>
       <!-- Icon dropdown -->
       <?php if (isset($_SESSION['user_id'])) { ?>
-      <div class="dropdown col-sm-3">
+      <div class="dropdown col-sm-2">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="justify-content: right; align-items: right; padding-right: 15px">
             <img src="img/logo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['username'];?></span>
@@ -67,7 +67,7 @@
 
       <?php }
       else { ?>
-      <div class="dropdown user-drop col-sm-3">
+      <div class="dropdown user-drop col-sm-2">
         <div style="position: absolute; right: 0; bottom: 0; margin-bottom: -20px; margin-right: 10px">
           <button type="button" class="user-btn btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
           <i class="fas fa-user-circle"></i>
