@@ -6,7 +6,7 @@
 -- Generation Time: Jun 12, 2022 at 04:42 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
-
+-- CREATE SCHEMA `res_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -26,21 +26,22 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `news`
 --
-
+drop table `news`;
 CREATE TABLE `news` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
   `datetime` datetime NOT NULL,
-  `content` text NOT NULL
+  `content` text NOT NULL,
+  `contentBody` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id`, `name`, `datetime`, `content`) VALUES
-(0, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Bình Thạnh'),
-(1, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Thủ Đức');
+INSERT INTO `news` (`id`, `name`, `datetime`, `content`,`contentBody`) VALUES
+(0, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Bình Thạnh','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.\n*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.'),
+(1, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Bình Thạnh','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.');
 
 -- --------------------------------------------------------
 

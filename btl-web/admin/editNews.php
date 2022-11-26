@@ -8,17 +8,18 @@
       $name = $_POST['name'];
       $datetime = $_POST['datetime'];
       $content = $_POST['content'];
-      $query3 = "UPDATE news SET name = ?, datetime = ?, content = ? WHERE id = ?";
+      $body=$_POST['contentBody'];
+      $query3 = "UPDATE news SET name = ?, datetime = ?, content = ?, contentBody = ? WHERE id = ?";
       $stmt = $conn->prepare($query3);
       // prepare query for execution
 
       // Execute the query
-      $stmt->bind_param('sssi', $name, $datetime, $content, $id);
+      $stmt->bind_param('ssssi', $name, $datetime, $content, $body, $id);
       $stmt->execute();
       if ($_POST['submit'])
       {
         echo "<script>
-        window.location.href='editNews.php?id=$id&name=$name&datetime=$datetime&content=$content'; alert('Chỉnh sửa thành công!')</script>";
+        window.location.href='editNews.php?id=$id&name=$name&datetime=$datetime&content=$content&contentBody=$body'; alert('Chỉnh sửa thành công!')</script>";
       }
       mysqli_close($conn);
     }   
@@ -69,8 +70,12 @@
           <td><input type='datetime-local' name='datetime' class='form-control' value="<?php echo $_GET['datetime']?>" required></td>
         </tr>
         <tr>
-          <td>Nội dung bài viết</td>
+          <td>Tiêu đề bài viết</td>
           <td><input type='textarea' name='content' class='form-control' value="<?php echo $_GET['content']?>" required></td>
+        </tr>
+        <tr>
+          <td>Nội dung bài viết</td>
+          <td><textarea rows=10 type='textarea' name='contentBody' class='form-control' required><?php echo $_GET['contentBody']?></textarea></td>
         </tr>
         <tr>
           <td></td>

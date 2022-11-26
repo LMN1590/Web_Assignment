@@ -17,6 +17,11 @@
   <link rel="stylesheet" href="admin-styles/styles.css">
   <title>Quản lý tin tức</title>
 </head>
+<style>
+  .bodyContent{
+    max-width:200px;
+  }
+</style>
 <body>
 
   <!-- nav bar --> 
@@ -28,39 +33,44 @@
     <form method="post" action="newsManagement.php">
       <a href="newNews.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm tin tức"></a>
     </form>
-    <?php
-      include('../config/config.php');
-      echo "<table class='table table-bordered'>
-              <tr>
-                  <th>ID</th>
-                  <th>Tên bài viết</th>
-                  <th>Ngày giờ đăng bài</th>
-                  <th>Nội dung bài viết</th>
-              </tr>
-              <tbody>";
-      $sql = "SELECT * from news";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $id = $row['id'];
-          $name = $row['name'];
-          $datetime = $row['datetime'];
-          $datetime = substr($datetime, 0, 10) . "T" . substr($datetime, 11);
-          $content = $row['content'];
-          echo "<tr>
-                  <td>" . $id . "</td>
-                  <td>" . $name . "</td>
-                  <td>" . $datetime . "</td>
-                  <td>" . $content . "</td>
-                  <td>
-                    <a href='editNews.php?id=$id&name=$name&datetime=$datetime&content=$content' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
-                    <a href='deleteNews.php?id=$id' class='btn btn-danger'>Xóa</a>
-                    <a href='../newsInfo.php?id=$id' class='btn btn-success'>Xem</a>
-                  </td>
-                </tr>";
+    <div class="container">
+      <?php
+        include('../config/config.php');
+        echo "<table class='table table-bordered'>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên bài viết</th>
+                    <th>Ngày giờ đăng bài</th>
+                    <th>Tiêu đề bài viết</th>
+                    <th>Nội dung bài viết</th>
+                </tr>
+                <tbody>";
+        $sql = "SELECT * from news";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $predatetime = $row['datetime'];
+            $datetime = substr($predatetime, 0, 10) . " Time: " . substr($predatetime, 11);
+            $content = $row['content'];
+            $body=$row['contentBody'];
+            echo "<tr>
+                    <td>" . $id . "</td>
+                    <td>" . $name . "</td>
+                    <td>" . $datetime . "</td>
+                    <td>" . $content . "</td>
+                    <td class=\"bodyContent\">" . $body . "</td>
+                    <td>
+                      <a href='editNews.php?id=$id&name=$name&datetime=$predatetime&content=$content&contentBody=$body' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
+                      <a href='deleteNews.php?id=$id' class='btn btn-danger'>Xóa</a>
+                      <a href='../newsInfo.php?news_id=$id' class='btn btn-success'>Xem</a>
+                    </td>
+                  </tr>";
+          }
+          echo "</tbody></table>";
         }
-        echo "</tbody></table>";
-      }
-    ?>
+      ?>
+    </div>
 </body>
 </html>
