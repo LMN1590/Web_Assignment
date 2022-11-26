@@ -39,6 +39,11 @@
       <div class=" site-cata height d-flex justify-content-center align-items-center">
         <div class="col-md-8">
           <div class="search">
+            <form method="post" action="index.php">
+              <i class="fa fa-search"></i>
+              <input type="text" name="input-search" class="form-control" placeholder="Bạn đang thèm gì?">
+              <input type="submit" class="form-control btn btn-primary" name="submit-search" value="Tìm kiếm">
+            </form>
           </div>     
         </div>
       </div>
