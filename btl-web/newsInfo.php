@@ -58,7 +58,9 @@
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
       $news_id = mysqli_real_escape_string($conn, $news_id);
-      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id) VALUES ('$user_id',now(),'$content', '$news_id')";
+      $num_like = 0;
+      $num_like = mysqli_real_escape_string($conn, $num_like);
+      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id, num_like) VALUES ('$user_id',now(),'$content', '$news_id', '$num_like')";
       $res = mysqli_query($conn, $query);
       if ($res) {
         header('location: newsInfo.php');
@@ -216,8 +218,8 @@
 
                   <div class="small d-flex justify-content-start">
                     <a href="#!" class="d-flex align-items-center me-3">
-                      <i class="far fa-thumbs-up me-2"></i>
-                      <p class="mb-0">Thích</p>
+                      <button class="far fa-thumbs-up me-2 Add_Numlike" method="POST"></button>
+                      <p class="mb-0"><?php echo $comment['num_like'] . " Thích" ;?></p>
                     </a>
                     <a href="#!" class="d-flex align-items-center me-3">
                       <i class="far fa-comment-dots me-2"></i>
@@ -240,6 +242,17 @@
           </div>
         </div>
     </div>
+    <script type="text/javascript">
+      $('.Add_Numlike').on('click', function(){
+        var numlike = $comment['num_like'];
+        numlike++;
+        $.ajax({
+          method: POST,
+          data:{num_like:numlike}
+        });
+        alert("hello");
+      });
+    </script>
   <!-- footer --> 
   <div>
     <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
