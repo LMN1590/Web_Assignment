@@ -79,4 +79,9 @@
     $temp = $_POST["input-search"];
     echo "<script>window.location.href = 'productsListSearch.php?content=$temp';</script>";
   }
+  if (isset($_POST["news-search"]))
+  {
+    $temp = $_POST["input-search"];
+    echo "<script>window.location.href = 'newsListSearch.php?content=$temp';</script>";
+  }
 ?>
