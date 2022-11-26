@@ -55,12 +55,10 @@
     if (isset($_POST['comment_post']) && isset($_SESSION['user_id'])) {
       $user_id = $_SESSION['user_id'];
       $user_id = mysqli_real_escape_string($conn, $user_id);
-      $datetime = date('d-m-y h:i:s');
-      $datetime = mysqli_real_escape_string($conn, $datetime);
       $content = $_POST['comment_text'];
       $content = mysqli_real_escape_string($conn, $content);
       $news_id = mysqli_real_escape_string($conn, $news_id);
-      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id) VALUES ('$user_id','$datetime','$content', '$news_id')";
+      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id) VALUES ('$user_id',now(),'$content', '$news_id')";
       $res = mysqli_query($conn, $query);
       if ($res) {
         header('location: newsInfo.php');
