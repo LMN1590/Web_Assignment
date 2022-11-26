@@ -68,30 +68,42 @@
     <div class="page-header">
       <h1>Sửa thông tin sản phẩm</h1>
     </div>
+    <?php
+      require_once('../config/config.php');
+      $id = '';
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+      } 
+      $query = "SELECT * FROM product WHERE id = " . $id;
+      $res = mysqli_query($conn, $query);
+      $products = mysqli_fetch_all($res, MYSQLI_ASSOC);
+      $product = $products[0];
+      mysqli_free_result($res);
+    ?>
     <form method="post" enctype="multipart/form-data">
       <table class='table table-hover table-responsive table-bordered'>
         <tr>
           <td>ID</td>
-          <td><input type='text' name='id' class='form-control' value="<?php echo $_GET['id']?>" disabled></td>
+          <td><input type='text' name='id' class='form-control' value="<?php echo $product['id']?>" disabled></td>
           <tr>
           <td>Tên sản phẩm</td>
-          <td><input type='text' name='name' class='form-control' value="<?php echo $_GET['name']?>" required></td>
+          <td><input type='text' name='name' class='form-control' value="<?php echo $product['name']?>" required></td>
         </tr>
         <tr>
           <td>Mô tả sản phẩm</td>
-          <td><input type='text' name='description' class='form-control' value="<?php echo $_GET['description']?>" required></td>
+          <td><input type='text' name='description' class='form-control' value="<?php echo $product['description']?>" required></td>
         </tr>
         <tr>
           <td>Giá</td>
-          <td><input type='number' name='price' class='form-control' value="<?php echo $_GET['price']?>" required></td>
+          <td><input type='number' name='price' class='form-control' value="<?php echo $product['price']?>" required></td>
         </tr>
         <tr>
           <td>Hình ảnh mới sản phẩm<br>(để trống nếu không thay đổi)</td>
-          <td><input type="file" name="img_path" class='form-control' value="<?php echo $_GET['img_path']?>" onchange="ValidateSingleInput(this);" accept=".png, .jpg, .jpeg, .gif"></td>
+          <td><input type="file" name="img_path" class='form-control' value="<?php echo $product['img_path']?>" onchange="ValidateSingleInput(this);" accept=".png, .jpg, .jpeg, .gif"></td>
         </tr>
         <tr>
           <td>Trạng thái (0: hết hàng, 1: còn hàng)</td>
-          <td><input type='number' name='status' class='form-control' value="<?php echo $_GET['status']?>" required></td>
+          <td><input type='number' name='status' class='form-control' value="<?php echo $product['status']?>" required></td>
         </tr>
         <tr>
           <td></td>
