@@ -54,23 +54,35 @@
     <div class="page-header">
       <h1>Sửa thông tin bài viết</h1>
     </div>
+    <?php
+      require_once('../config/config.php');
+      $id = '';
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+      } 
+      $query = "SELECT * FROM news WHERE id = " . $id;
+      $res = mysqli_query($conn, $query);
+      $news = mysqli_fetch_all($res, MYSQLI_ASSOC);
+      $news = $news[0];
+      mysqli_free_result($res);
+    ?>
     <form method="post">
       <table class='table table-hover table-responsive table-bordered'>
       <tr>
           <td>ID bài viết</td>
-          <td><input type='number' name='id' class='form-control' value="<?php echo $_GET['id']?>" disabled></td>
+          <td><input type='number' name='id' class='form-control' value="<?php echo $news['id']?>" disabled></td>
         </tr>
       <tr>
           <td>Tên bài viết</td>
-          <td><input type='text' name='name' class='form-control' value="<?php echo $_GET['name']?>" required></td>
+          <td><input type='text' name='name' class='form-control' value="<?php echo $news['name']?>" required></td>
         </tr>
         <tr>
           <td>Ngày & giờ đăng bài viết</td>
-          <td><input type='datetime-local' name='datetime' class='form-control' value="<?php echo $_GET['datetime']?>" required></td>
+          <td><input type='datetime-local' name='datetime' class='form-control' value="<?php echo $news['datetime']?>" required></td>
         </tr>
         <tr>
           <td>Nội dung bài viết</td>
-          <td><input type='textarea' name='content' class='form-control' value="<?php echo $_GET['content']?>" required></td>
+          <td><input type='textarea' name='content' class='form-control' value="<?php echo $news['content']?>" required></td>
         </tr>
         <tr>
           <td></td>

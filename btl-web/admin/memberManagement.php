@@ -26,7 +26,7 @@
   </div>
   <!-- end nav bar --> 
   <form method="post" action="memberManagement.php">
-    <!--<a href="memberManagement.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" name="display" value="Hiển thị danh sách thành viên"></a>-->
+    <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
     <a href="newMember.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm thành viên"></a>
   </form>
   <?php
@@ -42,7 +42,7 @@
                 <th>Email</th>
                 <th>Số điện thoại</th>
                 <th>Địa chỉ</th>
-                <th>Sửa/Xóa thông tin</th>
+                <th>Phím tắt</th>
             </tr>
             <tbody>";
     $sql = "SELECT * from user";
@@ -69,7 +69,7 @@
                 <td>" . $phone . "</td>
                 <td>" . $address . "</td>
                 <td>
-                  <a href='editMember.php?id=$id&username=$username&password=$password&full_name=$full_name&sex=$seggs&birthday=$birthday&email=$email&phone=$phone&address=$address' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
+                  <a href='editMember.php?id=$id' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
                   <a href='deleteMember.php?id=$id' class='btn btn-danger'>Xóa</a>
                 </td>
               </tr>";

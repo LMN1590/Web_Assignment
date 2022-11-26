@@ -65,38 +65,50 @@
     <div class="page-header">
       <h1>Sửa thông tin thành viên</h1>
     </div>
+    <?php
+      require_once('../config/config.php');
+      $id = '';
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+      } 
+      $query = "SELECT * FROM user WHERE id = " . $id;
+      $res = mysqli_query($conn, $query);
+      $user = mysqli_fetch_all($res, MYSQLI_ASSOC);
+      $user = $user[0];
+      mysqli_free_result($res);
+    ?>
     <form method="post">
       <table class='table table-hover table-responsive table-bordered'>
         <tr>
           <td>ID</td>
-          <td><input type='text' name='id' class='form-control' value="<?php echo $_GET['id']?>" disabled></td>
+          <td><input type='text' name='id' class='form-control' value="<?php echo $user['id']?>" disabled></td>
         </tr>
         <tr>
           <td>Username</td>
-          <td><input type='text' name='username' class='form-control' value="<?php echo $_GET['username']?>" required></td>
+          <td><input type='text' name='username' class='form-control' value="<?php echo $user['username']?>" required></td>
         </tr>
         <tr>
           <td>Password</td>
-          <td><input type='text' name='password' class='form-control' value="<?php echo $_GET['password']?>" required></td>
+          <td><input type='text' name='password' class='form-control' value="<?php echo $user['password']?>" required></td>
         </tr>
         <tr>
           <td>Họ & tên</td>
-          <td><input type='text' name='full_name' class='form-control' value="<?php echo $_GET['full_name']?>" required></td>
+          <td><input type='text' name='full_name' class='form-control' value="<?php echo $user['full_name']?>" required></td>
         </tr>
         <tr>
           <td>Giới tính</td>
           <td>
             <select class="select" name="sex" required>
               <?php 
-                if ($_GET['sex'] == 'Nam') 
+                if ($user['sex'] == 'Nam') 
                   echo "<option value='Nam' selected>Nam</option>
                         <option value='Nữ'>Nữ</option>
                         <option value='Khác'>Khác</option>";
-                elseif ($_GET['sex'] == 'Nữ') 
+                elseif ($user['sex'] == 'Nữ') 
                   echo "<option value='Nam'>Nam</option>
                         <option value='Nữ' selected>Nữ</option>
                         <option value='Khác'>Khác</option>";
-                elseif ($_GET['sex'] == 'Khác') 
+                elseif ($user['sex'] == 'Khác') 
                   echo "<option value='Nam'>Nam</option>
                         <option value='Nữ'>Nữ</option>
                         <option value='Khác' selected>Khác</option>";
@@ -106,19 +118,19 @@
         </tr>
         <tr>
           <td>Sinh nhật</td>
-          <td><input type='date' name='birthday' class='form-control' value="<?php echo $_GET['birthday']?>" required></td>
+          <td><input type='date' name='birthday' class='form-control' value="<?php echo $user['birthday']?>" required></td>
         </tr>
         <tr>
           <td>Email</td>
-          <td><input type='email' name='email' class='form-control' value="<?php echo $_GET['email']?>" required></td>
+          <td><input type='email' name='email' class='form-control' value="<?php echo $user['email']?>" required></td>
         </tr>
         <tr>
           <td>Số điện thoại</td>
-          <td><input type='text' name='phone' class='form-control' value="<?php echo $_GET['phone']?>" required></td>
+          <td><input type='text' name='phone' class='form-control' value="<?php echo $user['phone']?>" required></td>
         </tr>
         <tr>
           <td>Địa chỉ</td>
-          <td><input type='text' name='address' class='form-control' value="<?php echo $_GET['address']?>" required></td>
+          <td><input type='text' name='address' class='form-control' value="<?php echo $user['address']?>" required></td>
         </tr>
         <tr>
           <td></td>
@@ -129,6 +141,9 @@
         </tr>
       </table>
     </form>
+    <?php 
+      mysqli_close($conn);
+    ?>
   </div> 
   <!-- end .container -->
 </body>

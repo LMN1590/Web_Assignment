@@ -26,6 +26,7 @@
   </div>
   <!-- end nav bar --> 
     <form method="post" action="newsManagement.php">
+      <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newNews.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm tin tức"></a>
     </form>
     <?php
@@ -36,6 +37,7 @@
                   <th>Tên bài viết</th>
                   <th>Ngày giờ đăng bài</th>
                   <th>Nội dung bài viết</th>
+                  <th>Phím tắt</th>
               </tr>
               <tbody>";
       $sql = "SELECT * from news";
@@ -53,7 +55,7 @@
                   <td>" . $datetime . "</td>
                   <td>" . $content . "</td>
                   <td>
-                    <a href='editNews.php?id=$id&name=$name&datetime=$datetime&content=$content' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
+                    <a href='editNews.php?id=$id' class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
                     <a href='deleteNews.php?id=$id' class='btn btn-danger'>Xóa</a>
                     <a href='../newsInfo.php?id=$id' class='btn btn-success'>Xem</a>
                   </td>
