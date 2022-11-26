@@ -5,8 +5,10 @@
   if (isset($_GET['prod_id'])) {
     $prod_id = $_GET['prod_id'];
   }
+  else if(isset($_POST['prod_id'])){
+    $prod_id = $_POST['prod_id'];
+  }
   $query = "SELECT * FROM product WHERE id = '" . $prod_id . "'";
-  echo '<script>alert("' . $query . '")</script>';
   $res = mysqli_query($conn, $query);
   $dish = mysqli_fetch_all($res, MYSQLI_ASSOC);
   $row_cnt = $res->num_rows;
@@ -155,7 +157,7 @@
           <div class="col-md-12 col-lg-10 col-xl-8">
             <div class="card">
               <div class="card-header py-3 border-0" style="background-color: #f8f9fa;">
-                <form action="" method="get">
+                <form action="" method="post">
                   <div class="d-flex flex-start w-100">
                     <img class="rounded-circle shadow-1-strong me-3"
                       src="img/logo.png" alt="avatar" width="40"

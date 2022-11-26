@@ -67,7 +67,7 @@
 
       <?php }
       else { ?>
-      <div class="dropdown user-drop col-sm-3">
+      <div class="dropdown user-drop col-sm-2">
         <div style="position: absolute; right: 0; bottom: 0; margin-bottom: -20px; margin-right: 10px">
           <button type="button" class="user-btn btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
           <i class="fas fa-user-circle"></i>
