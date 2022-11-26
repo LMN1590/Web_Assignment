@@ -34,7 +34,7 @@
       <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newNews.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm tin tức"></a>
     </form>
-    <div class="container"></div>
+    <div class="container">
     <?php
       include('../config/config.php');
       echo "<table class='table table-bordered'>
@@ -72,6 +72,8 @@
         }
       }
       ?>
+    </div>
+    
     </div>
 </body>
 </html>

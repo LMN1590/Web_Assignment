@@ -16,6 +16,11 @@
   <!-- CSS -->
   <link rel="stylesheet" href="admin-styles/styles.css">
   <title>Quản lý sản phẩm</title>
+  <style>
+    .btnn{
+      min-width: 200px;
+    }
+  </style>
 </head>
 <body>
 
@@ -29,46 +34,49 @@
       <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newProduct.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm sản phẩm"></a>
     </form>
-    <?php
-      include('../config/config.php');
-      echo "<table class='table table-bordered'>
-              <tr>
-                  <th>ID</th>
-                  <th>Tên sản phẩm</th>
-                  <th>Mô tả sản phẩm</th>
-                  <th>Giá</th>
-                  <th>Hình</th>
-                  <th>Trạng thái (còn/hết)</th>
-                  <th>Phím tắt</th>
-              </tr>
-              <tbody>";
-      $sql = "SELECT * from product";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $id = $row['id'];
-          $name = $row['name'];
-          $description = $row['description'];
-          $price = $row['price'];
-          $img_path = $row['img_path'];
-          $status = $row['status'];
-          echo "<tr>
-                  <td>" . $id . "</td>
-                  <td>" . $name . "</td>
-                  <td>" . $description . "</td>
-                  <td>" . $price . "</td>
-                  <td>" . $img_path . "</td>
-                  <td>" . $status . "</td>
-                  <td>
-                    <a href='editProduct.php?id=$id' 
-                      class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
-                    <a href='deleteProduct.php?id=$id' class='btn btn-danger'>Xóa</a>
-                    <a href='../productInfo.php?prod_id=$id' class='btn btn-success'>Xem</a>
-                  </td>
-                </tr>";
+    <div class="container">
+      <?php
+        include('../config/config.php');
+        echo "<table class='table table-bordered'>
+                <tr>
+                    <th>ID</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Mô tả sản phẩm</th>
+                    <th>Giá</th>
+                    <th>Hình</th>
+                    <th>Trạng thái (còn/hết)</th>
+                    <th>Phím tắt</th>
+                </tr>
+                <tbody>";
+        $sql = "SELECT * from product";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $description = $row['description'];
+            $price = $row['price'];
+            $img_path = $row['img_path'];
+            $status = $row['status'];
+            echo "<tr>
+                    <td>" . $id . "</td>
+                    <td>" . $name . "</td>
+                    <td>" . $description . "</td>
+                    <td>" . $price . "</td>
+                    <td>" . $img_path . "</td>
+                    <td>" . $status . "</td>
+                    <td class=\"btnn\">
+                      <a href='editProduct.php?id=$id' 
+                        class='btn btn-primary m-r-1em' name='edit'>Sửa</a>
+                      <a href='deleteProduct.php?id=$id' class='btn btn-danger'>Xóa</a>
+                      <a href='../productInfo.php?prod_id=$id' class='btn btn-success'>Xem</a>
+                    </td>
+                  </tr>";
+          }
+          echo "</tbody></table>";
         }
-        echo "</tbody></table>";
-      }
-    ?>
+      ?>
+    </div>
+    
 </body>
 </html>

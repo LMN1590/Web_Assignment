@@ -29,42 +29,45 @@
       <a href="index.php"><input type="button" class="p-3 mb-2 bg-gray bg-gradient text-black" value="Trở lại"></a>
       <a href="newNewsComment.php"><input type="button" class="p-3 mb-2 bg-primary bg-gradient text-white" value="Thêm bình luận"></a>
     </form>
-    <?php
-      include('../config/config.php');
-      echo "<table class='table table-bordered'>
-              <tr>
-                  <th>ID</th>
-                  <th>ID người viết bình luận</th>
-                  <th>Thời gian</th>
-                  <th>Nội dung</th>
-                  <th>ID bài viết</th>
-                  <th>Xem bài viết chứa bình luận</th>
-              </tr>
-              <tbody>";
-      $sql = "SELECT * from news_comments";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $id = $row['id'];
-          $user_id = $row['user_id'];
-          $datetime = $row['datetime'];
-          $content = $row['content'];
-          $content = mysqli_real_escape_string($conn, $content);
-          $news_id = $row['news_id'];
-          echo "<tr>
-                  <td>" . $id . "</td>
-                  <td>" . $user_id . "</td>
-                  <td>" . $datetime . "</td>
-                  <td>" . $content . "</td>
-                  <td>" . $news_id . "</td>
-                  <td>
-                      <a href='../newsInfo.php?news_id=$news_id'
-                        class='btn btn-primary m-r-1em' name='edit'>Xem</a>
-                  </td>
-                </tr>";
+    <div class="container">
+      <?php
+        include('../config/config.php');
+        echo "<table class='table table-bordered'>
+                <tr>
+                    <th>ID</th>
+                    <th>ID người viết bình luận</th>
+                    <th>Thời gian</th>
+                    <th>Nội dung</th>
+                    <th>ID bài viết</th>
+                    <th>Xem bài viết chứa bình luận</th>
+                </tr>
+                <tbody>";
+        $sql = "SELECT * from news_comments";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+          while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $user_id = $row['user_id'];
+            $datetime = $row['datetime'];
+            $content = $row['content'];
+            $content = mysqli_real_escape_string($conn, $content);
+            $news_id = $row['news_id'];
+            echo "<tr>
+                    <td>" . $id . "</td>
+                    <td>" . $user_id . "</td>
+                    <td>" . $datetime . "</td>
+                    <td>" . $content . "</td>
+                    <td>" . $news_id . "</td>
+                    <td>
+                        <a href='../newsInfo.php?news_id=$news_id'
+                          class='btn btn-primary m-r-1em' name='edit'>Xem</a>
+                    </td>
+                  </tr>";
+          }
+          echo "</tbody></table>";
         }
-        echo "</tbody></table>";
-      }
-    ?>
+      ?>
+    </div>
+    
 </body>
 </html>
