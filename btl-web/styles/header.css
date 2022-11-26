@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  transition: 0.2s linear;
+}
+
+:root {
+  --color: #ff7f50;
+  --border: 5px solid #ff7f50;
+  --gray: #57606f;
+  --bg: rgba(255, 255, 255, 0.3);
+}
+
+/* navbar section */
+.my-navbar {
+  border-bottom: var(--border);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--color);
+  font-weight: bold;
+  border-bottom: 5px solid transparent;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+  border-bottom: var(--border);
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.user-btn {
+  color: var(--color);
+}
+
+.dropdown-item {
+  color: var(--color);
+}

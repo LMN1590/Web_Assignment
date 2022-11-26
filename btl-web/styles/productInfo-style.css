@@ -1,0 +1,34 @@
+h1 {
+    font-family: "Segoe UI Black", sans-serif;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 34px;
+    color: #344055;
+    margin: 0;
+  }
+  
+  .productDISP {
+    background-color: var(--color);
+  }
+
+  .stat-ok {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .stat-fail {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .btn-orange  
+  {
+    background-color: var(--color);
+  }
+
+  .btn-orange-out
+  {
+    color: var(--color);
+    
+  }

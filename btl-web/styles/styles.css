@@ -1,0 +1,96 @@
+/* universal setting */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  transition: 0.2s linear;
+}
+
+:root {
+  --color: #ff7f50;
+  --border: 5px solid #ff7f50;
+  --gray: #57606f;
+  --bg: rgba(255, 255, 255, 0.3);
+}
+
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+
+/* main content*/
+/*search*/
+.food-search {
+  background-image: url(../img/ramen-bg-searchbar.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 7% 0;
+  background-size: cover;
+  max-width: 100%;
+  height: 100%;
+}
+
+.search {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+}
+
+.search input {
+  height: 60px;
+  text-indent: 25px;
+  border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+  box-shadow: none;
+  border: 2px solid var(--color);
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+}
+
+.search button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 50px;
+  width: 110px;
+  background: var(--color);
+}
+
+/* .search button:hover {
+  background: var(--gray);
+} */
+
+.box-3 {
+  width: 100%;
+  margin: 4% auto;
+}
+
+.img-curve {
+  border-radius: 15px;
+}
+
+.container-img {
+  padding: 4%;
+}
+.headline-container {
+  justify-content: center;
+}
+.headline {
+  color: var(--color);
+}
+.snippet {
+  color: var(--color);
+}

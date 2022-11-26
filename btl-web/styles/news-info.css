@@ -1,0 +1,25 @@
+:root {
+    --color: #ff7f50;
+    --border: 5px solid #ff7f50;
+    --gray: #57606f;
+    --bg: rgba(255, 255, 255, 0.3);
+  }
+
+  h1 {
+    font-family: "Segoe UI Black", sans-serif;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 34px;
+    color: white;
+    margin: 0;
+  }
+
+  .newsDISP {
+    background-color: var(--gray);
+  }
+
+  .nonedecor
+  {
+    text-decoration: none;
+  }
