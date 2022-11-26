@@ -34,7 +34,7 @@
   padding: 9% 8%;
   background-size: cover;
   max-width: 100%;
-  height: 100%;
+  height: 300px;
   border-bottom: var(--border);">
         <div class="col-md-8">
           <div class="search">
