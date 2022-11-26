@@ -48,23 +48,24 @@ INSERT INTO `news` (`id`, `name`, `datetime`, `content`,`contentBody`) VALUES
 --
 -- Table structure for table `news_comments`
 --
-
 CREATE TABLE `news_comments` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
   `datetime` datetime NOT NULL,
   `content` text NOT NULL,
-  `news_id` int(11) NOT NULL
+  `news_id` int(11) NOT NULL,
+  `num_like` int NOT NULL DEFAULT 0,
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `news_comments`
 --
 
-INSERT INTO `news_comments` (`id`, `user_id`, `datetime`, `content`, `news_id`) VALUES
-(0, 2052243, '2022-06-15 00:00:00', 'Quán thoáng mát, rộng rãi!', 0),
-(1, 2052242, '2016-06-22 10:14:59', 'nut', 0),
-(2, 2052242, '2016-06-22 10:16:04', 'Địa điểm gần nhà, thuận tiện!', 1);
+INSERT INTO `news_comments` (`id`, `user_id`, `datetime`, `content`, `news_id`,`num_like`) VALUES
+(1, 2052243, '2022-06-15 00:00:00', 'Quán thoáng mát, rộng rãi!', 0,12),
+(0, 2052242, '2016-06-22 10:14:59', 'nut', 0,5),
+(2, 2052242, '2016-06-22 10:16:04', 'Địa điểm gần nhà, thuận tiện!', 1,0);
 
 -- --------------------------------------------------------
 
@@ -101,25 +102,27 @@ INSERT INTO `product` (`id`, `name`, `description`, `price`, `img_path`, `status
 --
 
 CREATE TABLE `prod_comments` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `user_id` int(11) NOT NULL,
   `datetime` datetime NOT NULL,
   `content` text NOT NULL,
-  `prod_id` int(11) NOT NULL
+  `prod_id` int(11) NOT NULL,
+  `num_like` int NOT NULL,
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `prod_comments`
 --
 
-INSERT INTO `prod_comments` (`id`, `user_id`, `datetime`, `content`, `prod_id`) VALUES
-(0, 2052243, '2022-06-15 00:00:00', 'Nhà hàng tuyệt hảo!', 0),
-(1, 2052242, '2016-06-22 10:41:30', 'afdf', 1),
-(2, 2052242, '2016-06-22 10:41:51', 'saikyou', 2),
-(3, 2052242, '2016-06-22 10:42:01', 'deadweight', 3),
-(4, 2052242, '2016-06-22 10:43:15', 'blalablala', 4),
-(5, 2052242, '2016-06-22 10:44:18', 'lmao', 5),
-(6, 2052242, '2016-06-22 10:12:46', 'nut', 6);
+INSERT INTO `prod_comments` (`id`, `user_id`, `datetime`, `content`, `prod_id`,`num_like`) VALUES
+(0, 2052243, '2022-06-15 00:00:00', 'Nhà hàng tuyệt hảo!', 0,2),
+(1, 2052242, '2016-06-22 10:41:30', 'afdf', 1,5),
+(2, 2052242, '2016-06-22 10:41:51', 'saikyou', 2,9),
+(3, 2052242, '2016-06-22 10:42:01', 'deadweight', 3,1),
+(4, 2052242, '2016-06-22 10:43:15', 'blalablala', 4,22),
+(5, 2052242, '2016-06-22 10:44:18', 'lmao', 5,8),
+(6, 2052242, '2016-06-22 10:12:46', 'nut', 6,5);
 
 -- --------------------------------------------------------
 
