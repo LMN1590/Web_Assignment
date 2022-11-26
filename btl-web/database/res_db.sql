@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `news`
 --
-drop table `news`;
+
 CREATE TABLE `news` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL,
