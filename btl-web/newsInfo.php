@@ -64,7 +64,7 @@
       if ($res) {
         header('location: newsInfo.php?news_id=' . $news_id);
       }
-      mysqli_free_result($res);
+      //mysqli_free_result($res);
     }
     else if (isset($_POST['comment_post'])) {
       echo "<script>
