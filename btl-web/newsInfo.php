@@ -1,26 +1,3 @@
-<?php
-  require_once('config/config.php');
-  //select data
-  $news_id = "";
-  if (isset($_GET['news_id'])) {
-    $news_id = $_GET['news_id'];
-  }
-  $query = "SELECT * FROM news WHERE id = '" . $news_id . "'";
-  $res = mysqli_query($conn, $query);
-  $newspage = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  $row_cnt = $res->num_rows;
-  $newspage1 = $newspage[0];
-
-  $query1 = "SELECT * FROM news_comments WHERE news_id = '" . $news_id . "'";
-  $res = mysqli_query($conn, $query1);
-  $cmts = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  $cmt_cnt = $res->num_rows;
-
-  $query2 = "SELECT id, username FROM user";
-  $res = mysqli_query($conn, $query2);
-  $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
-  mysqli_free_result($res);
-?> 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +26,27 @@
   </div>
   <!-- end nav bar --> 
   <?php
+    require_once('config/config.php');
+    //select data
+    $news_id = "";
+    if (isset($_GET['news_id'])) {
+      $news_id = $_GET['news_id'];
+    }
+    $query = "SELECT * FROM news WHERE id = '" . $news_id . "'";
+    $res = mysqli_query($conn, $query);
+    $newspage = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $row_cnt = $res->num_rows;
+    $newspage1 = $newspage[0];
+
+    $query1 = "SELECT * FROM news_comments WHERE news_id = '" . $news_id . "'";
+    $res = mysqli_query($conn, $query1);
+    $cmts = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $cmt_cnt = $res->num_rows;
+
+    $query2 = "SELECT id, username FROM user";
+    $res = mysqli_query($conn, $query2);
+    $users = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    mysqli_free_result($res);
     if ($row_cnt == 0){
       echo "<div class='alert alert-danger'>No records found.</div>";
     }
@@ -59,7 +57,8 @@
       $content = mysqli_real_escape_string($conn, $content);
       $news_id = $_POST['news_id'];
       $news_id = mysqli_real_escape_string($conn, $news_id);
-      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id) VALUES ('$user_id',now(),'$content', '$news_id')";
+      $num_like = 0;
+      $query = "INSERT INTO `news_comments` (user_id, datetime, content, news_id, num_like) VALUES ('$user_id',now(),'$content', '$news_id', '$num_like')";
       $res = mysqli_query($conn, $query);
       if ($res) {
         header('location: newsInfo.php?news_id=' . $news_id);
@@ -215,8 +214,8 @@
 
                   <div class="small d-flex justify-content-start">
                     <a href="#!" class="d-flex align-items-center me-3">
-                      <i class="far fa-thumbs-up me-2"></i>
-                      <p class="mb-0">Thích</p>
+                      <div class="far fa-thumbs-up me-2 Add_Numlike" onclick="change(<?php echo $comment['id']?>)"></div>
+                      <p class="mb-0" id="L<?php echo $comment['id']?>"  ><?php echo $comment['num_like'] . " Thích" ;?></p>
                     </a>
                     <a href="#!" class="d-flex align-items-center me-3">
                       <i class="far fa-comment-dots me-2"></i>
@@ -230,7 +229,7 @@
                 </div>
                 <?php 
                       }  
-                      mysqli_close($conn);
+                      
                 }
                 ?>
                 <!--cmt-->
@@ -239,6 +238,24 @@
           </div>
         </div>
     </div>
+    <script>
+      function change(id){
+        console.log(id);
+        $.ajax({
+            url:"newsLike.php",
+            data:{
+              cmtID:String(id)
+            },
+            type:"get",
+            success: function(data,status){
+                $("#L"+String(id)).text(data+" Thích");
+            }
+        });
+      }
+    </script>
+    <?php
+      mysqli_close($conn);
+    ?>
   <!-- footer --> 
   <div>
     <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
