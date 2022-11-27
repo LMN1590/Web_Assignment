@@ -1,4 +1,9 @@
 <?php
+  //initialize sessions
+  if (session_id() === "") {
+    session_start();
+  }
+
   require_once('config/config.php');
   //select data
   $query = "SELECT * FROM product ORDER BY id";
@@ -6,6 +11,39 @@
   $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
   $row_cnt = $res->num_rows;
   mysqli_free_result($res);
+
+  //Load up session for cart
+  if ( !isset($_SESSION["cart"]) ) {
+    $_SESSION["cart"] = array(-1);
+    for ($i=0; $i< $row_cnt; $i++) {
+      $_SESSION["quantity"][$i] = 0;
+    }
+  }
+  //Add
+  if ( isset($_GET["add"]) ) {
+    $id = $_GET["add"];
+    $quantity = $_SESSION["quantity"][$id] + 1;
+    $check = true;
+    foreach($_SESSION["cart"] as $productId) {
+      if ($productId == $id) {
+        $check = false;
+      }
+    }
+    if ($check) {
+      array_push($_SESSION["cart"], $id);
+      $_SESSION["quantity"][$id] = $quantity;
+    }
+    else {
+      $_SESSION["quantity"][$id] = $quantity + 1;
+    }
+    echo "<script>
+              Swal.fire({
+                icon: 'correct',
+                title: 'Thêm thành công!',
+                confirmButtonColor: '#ff7f50'
+              })
+            </script>";
+  }
 ?> 
 
 <!DOCTYPE html>
@@ -56,22 +94,22 @@
           foreach ($food as $dish) {
         ?>
         <div class="card p-3">
-          <div class="top-div">
+          <div class="top-div" href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>">
               <div class="border">
               <img src="<?php echo htmlspecialchars($dish['img_path']); ?>">
               </div>
               <span style="width: auto; padding: 0 10px 0 10px"><?php echo htmlspecialchars($dish['price']); ?>K</span>
+              <a href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>" class="stretched-link"></a>
           </div>
-          <div class="bottom-div">
+          <div class="bottom-div" href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>">
               <h3><?php echo htmlspecialchars($dish['name']); ?></h3>
               <p><?php echo htmlspecialchars($dish['description']); ?></p>
+                <a class="btn btn-dark" href="?add=<?php echo(htmlspecialchars($dish['id'])); ?>">Thêm ngay</a>
           </div>
           <div class="last-section">
               <div class="last-div">
                 <i class="fa fa-comment-o"></i>
               </div>
-              <a href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>" class="stretched-link">
-              </a>
           </div>
         </div>
         <?php 
