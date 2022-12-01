@@ -1,8 +1,6 @@
 <?php
   //initialize sessions
-  if (session_id() === "") {
-    session_start();
-  }
+  session_start();
 
   require_once('config/config.php');
   //select data
@@ -22,27 +20,12 @@
   //Add
   if ( isset($_GET["add"]) ) {
     $id = $_GET["add"];
-    $quantity = $_SESSION["quantity"][$id] + 1;
-    $check = true;
-    foreach($_SESSION["cart"] as $productId) {
-      if ($productId == $id) {
-        $check = false;
-      }
-    }
-    if ($check) {
+    if (!in_array($id, $_SESSION["cart"])) {
       array_push($_SESSION["cart"], $id);
-      $_SESSION["quantity"][$id] = $quantity;
     }
-    else {
-      $_SESSION["quantity"][$id] = $quantity + 1;
-    }
-    echo "<script>
-              Swal.fire({
-                icon: 'correct',
-                title: 'Thêm thành công!',
-                confirmButtonColor: '#ff7f50'
-              })
-            </script>";
+    $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
+    header("Location:productsList.php");
+    exit();
   }
 ?> 
 

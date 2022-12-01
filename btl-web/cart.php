@@ -1,8 +1,6 @@
 <?php
     //initialize sessions
-    if (session_id() === "") {
     session_start();
-    }
 
     require_once('config/config.php');
     //select data
@@ -15,7 +13,7 @@
     if ( !isset($_SESSION["cart"]) ) {
         $_SESSION["cart"] = array(-1);
         for ($i=0; $i< $row_cnt; $i++) {
-        $_SESSION["quantity"][$i] = 0;
+            $_SESSION["quantity"][$i] = 0;
         }
     }
 
@@ -23,16 +21,33 @@
     if ( isset($_GET["delete"]) ) {
         $id = $_GET["delete"];
         $_SESSION["quantity"][$id] = 0;
-        unset($_SESSION["cart"][$id]);
+        $index = array_search($id, $_SESSION["cart"]);
+        unset($_SESSION["cart"][$index]);
+        header("Location:cart.php");
+        exit();
     }
 
     //Reset
-    if ( isset($_GET['reset']) ) {
+    if ( isset($_GET["reset"]) ) {
         if ($_GET["reset"] == 'true') {
             unset($_SESSION["quantity"]); //The quantity for each product
             unset($_SESSION["total"]); //The total cost
             unset($_SESSION["cart"]); //Which item has been chosen
         }
+        header("Location:cart.php");
+        exit();
+    }
+
+    //Update
+    if ( isset($_GET["update"]) ) {
+        foreach ($_SESSION["cart"] as $key=>$id) {
+            echo $id." ".array_key_exists($id,$_SESSION["quantity"]).'<br>';
+            if ($key != 0) {
+                $_SESSION["quantity"][$id] = $_GET[$id];
+            }
+        }
+        echo var_dump( $_SESSION["quantity"]);
+        header("Location: cart.php");
     }
 ?> 
 
@@ -50,7 +65,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="styles/cart.css">
-  <title>Tin tức</title>
+  <title>Giỏ hàng</title>
 </head>
 
 <body>
@@ -67,7 +82,7 @@
             <div class="row border-bottom border-dark" style="margin-top: 100px;">
                 <div class="col-6"><h2>GIỎ HÀNG</h2></div>
                 
-                <div class="col-6"><h2>Số lượng: <?php echo htmlspecialchars(count($_SESSION["cart"]) - 1); ?></h2></div>
+                <div class="col-6"><h2>Tổng sản phẩm: <?php echo htmlspecialchars(count($_SESSION["cart"]) - 1); ?></h2></div>
             </div>
             <div class="row p-3 border-bottom border-dark">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
@@ -83,68 +98,80 @@
                 <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center"></div>
             </div>
             <!-- Product -->
-            <?php
-                $query1 = 'SELECT * FROM product where id in ('. implode(",",$_SESSION["cart"]) .') ORDER BY id';
-                $res = mysqli_query($conn, $query1);
-                $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
-                $row_cnt = $res->num_rows;
-                mysqli_free_result($res);
-                if ($row_cnt == 0){
-                    echo "<div class='alert alert-danger'>Giỏ hàng bạn đang trống</div>";
-                }
-                foreach ($food as $dish) {
-            ?>
-            <div class="row p-3 border-bottom border-dark">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                    <div class="row">
-                        <div class="product-img" style="padding:0px;">
-                            <img src="<?php echo htmlspecialchars($dish['img_path']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($dish['name']); ?>">
+            <form name="form" action="" method="get">
+                <?php
+                    $query1 = 'SELECT * FROM product where id in ('. implode(",",$_SESSION["cart"]) .') ORDER BY id';
+                    $res = mysqli_query($conn, $query1);
+                    $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
+                    $row_cnt = $res->num_rows;
+                    mysqli_free_result($res);
+                    if ($row_cnt == 0){
+                        echo "<div class='alert alert-danger mt-3'>Giỏ hàng bạn đang trống</div>";
+                    }
+                    foreach ($food as $dish) {
+                ?>
+                <div class="row p-3 border-bottom border-dark">
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                        <div class="row">
+                            <div class="product-img" style="padding:0px;">
+                                <img src="<?php echo htmlspecialchars($dish['img_path']); ?>" class="img-fluid" alt="<?php echo htmlspecialchars($dish['name']); ?>">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <div class="row">
-                        <h5><?php echo htmlspecialchars($dish['name']); ?></h5>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                        <div class="row">
+                            <h5><?php echo htmlspecialchars($dish['name']); ?></h5>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-md-3 col-xs-3 d-flex justify-content-center">
+                        <div class="row" style="width:64px; height:30px;">
+                            <input type="number" name="<?php echo htmlspecialchars($dish['id']);?>" aria-label="number-of-product" value="<?php echo $_SESSION["quantity"][$dish['id']]; ?>" min="1" class="form-control p-0 text-center border-dark quantity">
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center">
+                        <p><?php echo(htmlspecialchars($dish['price'])); ?>000</p>
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 ">
+                        <a class="btn btn-primary" href="?delete=<?php echo(htmlspecialchars($dish['id'])); ?>">Xóa</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-md-3 col-xs-3 d-flex justify-content-center">
-                    <div class="row" style="width:64px; height:30px;">
-                        <input type="number" aria-label="number-of-product" value="1" class="form-control p-0 text-center border-dark">
-                    </div>
-                </div>
-                <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center">
-                    <p><?php echo(htmlspecialchars($dish['price'])); ?>000</p>
-                </div>
-                <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 ">
-                    <a class="btn btn-primary" href="?delete=<?php echo(htmlspecialchars($dish['id'])); ?>">Xóa</a>
-                </div>
-            </div>
-            <?php 
-                }
-                mysqli_close($conn);
-            ?>
-            <div class="row">
+                <?php 
+                    }
+                    mysqli_close($conn);
+                ?>
+             <div class="row">
                 <div class="col-6">
                     <div class="mt-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Ghi chú</label>
                         <textarea class="form-control border-dark" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-6">
-                        <div class="d-flex justify-content-center mt-5">
-                            <button type="button" class="btn btn-primary">Cập nhật</button>
-                            <button type="button" class="btn btn-primary" style="margin-left:20px;">Thanh toán</button>
-                        </div>
+                    <div class="d-flex justify-content-center mt-5">
+                        <input type="text" name="update" value="true" hidden>
+                        <button type="submit" class="btn btn-primary" >Cập nhật</button>
+                        <a type="button" class="btn btn-primary" href="?reset=true" style="margin-left:20px;">Xóa bỏ</a>
+                        <a type="button" class="btn btn-primary" style="margin-left:20px;">Thanh toán</a>
+                    </div>
                 </div>
+            </form>
             </div>
+            <!--Main layout-->
         </div>
-<!--Main layout-->
   <!-- footer --> 
   <div>
     <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
     include($IPATH."footer.php");?>
   </div>
   <!-- end footer --> 
-  
-</body>
+  <!-- <script>
+    $(document).ready(function() {
+        $("#update").click(function(){
+            $(".quantity")
+        })
+
+    }) -->
+
+  </script>
+<body>
 </html>
