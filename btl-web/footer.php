@@ -14,7 +14,7 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="footer text-center" style="font-family: 'Oswald', sans-serif;">
+  <div class="footer text-center mt-3" style="font-family: 'Oswald', sans-serif;">
       <div class="container p-4">
         <!-- Section: Social media -->
         <div class="mb-4">

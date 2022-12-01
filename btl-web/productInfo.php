@@ -1,3 +1,35 @@
+<?php
+  //initialize sessions
+    session_start();
+
+  require_once('config/config.php');
+  //select data
+  $query = "SELECT * FROM product ORDER BY id";
+  $res = mysqli_query($conn, $query);
+  $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
+  $row_cnt = $res->num_rows;
+  mysqli_free_result($res);
+
+  //Load up session for cart
+  if ( !isset($_SESSION["cart"]) ) {
+    $_SESSION["cart"] = array(-1);
+    for ($i=0; $i< $row_cnt; $i++) {
+      $_SESSION["quantity"][$i] = 0;
+    }
+  }
+
+  //Add
+  if ( isset($_GET["add"]) ) {
+    $id = $_GET["add"];
+    if (!in_array($id, $_SESSION["cart"])) {
+      array_push($_SESSION["cart"], $id);
+    }
+    $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
+    header('location: productInfo.php?prod_id=' . $_POST['prod_id']);
+    exit();
+  }
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,6 +96,7 @@
       $res = mysqli_query($conn, $query);
       if ($res) {
         header('location: productInfo.php?prod_id=' . $prod_id);
+        exit();
       }
       mysqli_free_result($res);
     }
@@ -119,6 +152,7 @@
                 }
               ?>
             </p>              
+            <a class="btn btn-dark" href="?add=<?php echo (htmlspecialchars($dish1['id'])); ?>">Thêm ngay</a>
             <a href="productsList.php" class="btn btn-success">Trở về Danh mục sản phẩm</a>
             
             <form class="d-flex justify-content-left">
