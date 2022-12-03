@@ -183,7 +183,6 @@
                 </div>
                 <?php 
                     }
-                    mysqli_close($conn);
                   }
                     else
                     {
