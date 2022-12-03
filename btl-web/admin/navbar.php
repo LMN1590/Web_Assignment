@@ -12,9 +12,15 @@
   <nav class="my-navbar navbar navbar-expand-xl navbar-dark bg">
     <!-- Container wrapper -->
     <div class="my-container container-fluid">
-        <a class="navbar-brand" href="index.php">
-        <img src="../img/logo.png" width="120" height="120" style="border-radius:100%;" class="d-inline-block align-top" alt="logo"><b>BẢNG ĐIỀU KHIỂN CỦA ADMIN</b>
-        </a>
+      <a class="navbar-brand" href="index.php">
+        <div class="container">
+          <div class="row">
+            <div class="col-6"><img src="../img/logo.png" width="120" height="120" style="border-radius:100%;" class="d-inline-block align-top" alt="logo"></div>
+            <div class="col-6" style="padding:45px;"><b>BẢNG ĐIỀU KHIỂN CỦA ADMIN</b></div>
+          </div>
+          
+        </div>
+      </a>
       <!-- Right elements -->
       <div class="d-flex align-items-center">
         <!-- Icon -->
