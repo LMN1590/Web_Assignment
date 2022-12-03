@@ -77,13 +77,13 @@
     }
   ?>
   <div id="container">
-    <div class="newsDISP" style="padding: 1em 0 0 2em; background-color: #eb4d4b">
+    <div class="newsDISP" style="padding: 1em 0 0 2em; background-color: #e9d993;">
         <div class="mb-3 text-white">
-            <h1 style="font-size: 50px"><?php echo htmlspecialchars($newspage1['name']); ?></h1>
+            <h1 style="font-size: 50px; color:black;"><?php echo htmlspecialchars($newspage1['name']); ?></h1>
         </div>
         <p class="lead text-white">
           <span class="text-white">
-            <h5 class="text-white"><?php echo htmlspecialchars($newspage1['datetime']); ?></h5>
+            <h5  style="color:black;"><?php echo htmlspecialchars($newspage1['datetime']); ?></h5>
           </span>
         </p>
         </div>

@@ -32,3 +32,9 @@ h1 {
     color: var(--color);
     
   }
+  .btn-custom{
+    background-color: #be9d09;
+  }
+  main{
+    margin-top:20px;
+  }
