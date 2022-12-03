@@ -152,7 +152,7 @@
                 }
               ?>
             </p>              
-            <a class="btn btn-dark" href="?add=<?php echo (htmlspecialchars($dish1['id'])); ?>">Thêm ngay</a>
+            <a class="btn btn-custom" href="?add=<?php echo (htmlspecialchars($dish1['id'])); ?>">Thêm ngay</a>
             <a href="productsList.php" class="btn btn-success">Trở về Danh mục sản phẩm</a>
             
             <form class="d-flex justify-content-left">

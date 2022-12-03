@@ -14,14 +14,14 @@
   <link rel="stylesheet" href="styles/header.css">
 </head>
 <body>
-  <nav class="my-navbar-logo navbar navbar-expand-xl navbar-dark bg-dark">
+  <nav class="my-navbar-logo navbar navbar-expand-xl navbar-dark bg">
       <div class="my-container container-fluid justify-content-center">
         <a class="navbar-brand" href="index.php">
             <img src="img/logo-name.png" width="120" height="120" class="d-inline-block align-top" alt="logo">
         </a>
       </div>
   </nav>    
-  <nav class="my-navbar navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="my-navbar navbar navbar-expand-lg navbar-dark bg">
   <div class="col-sm-2"></div>
   <div class="col-sm-8" style="text-align: center">
     <div class="my-container container-fluid justify-content-center">
@@ -76,7 +76,7 @@
       else { ?>
       <div class="dropdown user-drop col-sm-2">
         <div style="position: absolute; right: 0; bottom: 0; margin-bottom: -20px; margin-right: 10px">
-          <button type="button" class="user-btn btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
+          <button type="button" class="user-btn btn btn-custom dropdown-toggle" data-bs-toggle="dropdown">
           <i class="fas fa-user-circle"></i>
           </button>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">

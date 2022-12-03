@@ -9,7 +9,7 @@
     <title>ADMIN DASHBOARD</title>
 </head>
 <body>
-  <nav class="my-navbar navbar navbar-expand-xl navbar-dark bg-dark">
+  <nav class="my-navbar navbar navbar-expand-xl navbar-dark bg">
     <!-- Container wrapper -->
     <div class="my-container container-fluid">
         <a class="navbar-brand" href="index.php">

@@ -87,7 +87,7 @@
           <div class="bottom-div" href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>">
               <h3><?php echo htmlspecialchars($dish['name']); ?></h3>
               <p><?php echo htmlspecialchars($dish['description']); ?></p>
-                <a class="btn btn-dark" href="?add=<?php echo(htmlspecialchars($dish['id'])); ?>">Thêm ngay</a>
+                <a class="btn btn-custom" href="?add=<?php echo(htmlspecialchars($dish['id'])); ?>">Thêm ngay</a>
           </div>
           <div class="last-section">
               <div class="last-div">
