@@ -100,13 +100,13 @@
         HỖ TRỢ TRỰC TUYẾN
       </div>
       <div class="row" style="font-size: 20px; background-color: #2ed573; border: 1px solid black; display: flex">
-        <p style="padding-top: 10px"><i class="fa fa-phone"> Mr. Sơn: (+84)822 870 179</i><br>
-        <i class="fa fa-phone"> Mr. Khang: (+84)838 374 577</i>
+        <p style="padding-top: 10px"><i class="fa fa-phone"> Mr. Danh: (+84)938 469 314</i><br>
+        <i class="fa fa-phone"> Mr. Nghĩa: (+84)901 561 789</i>
       </p>
       </div>
       <div class="row" style="font-size: 20px; background-color: #ffa502; border: 1px solid black; display: flex">
-        <p style="padding-top: 10px"><i class="fas fa-envelope"> Mr. Khang: khang.lamborghini@hcmut.edu.vn</i><br>
-        <i class="fas fa-envelope"> Mr. Toàn: toan.vu1805@hcmut.edu.vn</i>
+        <p style="padding-top: 10px"><i class="fas fa-envelope"> Mr. Danh: danh@hcmut.edu.vn</i><br>
+        <i class="fas fa-envelope"> Mr. Nghĩa: nghia@hcmut.edu.vn</i>
       </p>
       </div>
     </div>
@@ -130,7 +130,7 @@
                   <form action="" method="post">
                     <div class="d-flex flex-start w-100">
                       <img class="rounded-circle shadow-1-strong me-3"
-                        src="img/logo.png" alt="avatar" width="40"
+                        src="img/nghia-ava.png" alt="avatar" width="40"
                         height="40" />
                       <div class="form-outline w-100">
                         <textarea class="form-control" id="textAreaExample" rows="4"
@@ -159,7 +159,7 @@
                 <div class="card-body">
                   <div class="d-flex flex-start align-items-center">
                     <img class="rounded-circle shadow-1-strong me-3"
-                      src="img/logo.png" alt="avatar" width="60"
+                      src="img/nghia-ava.png" alt="avatar" width="60"
                       height="60" />
                     <div>
                       <h6 class="fw-bold text-primary mb-1">
@@ -196,7 +196,7 @@
                 <div class="card-body">
                   <div class="d-flex flex-start align-items-center">
                     <img class="rounded-circle shadow-1-strong me-3"
-                      src="img/logo.png" alt="avatar" width="60"
+                      src="img/nghia-ava.png" alt="avatar" width="60"
                       height="60" />
                     <div>
                       <h6 class="fw-bold text-primary mb-1">
