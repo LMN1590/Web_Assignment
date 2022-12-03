@@ -22,7 +22,6 @@
   <!-- Bootstrap CDN-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="styles/product-style.css">
   <title>Sản phẩm</title>
@@ -47,14 +46,14 @@
           </div>     
         </div>
       </div>
-      <div class="justify-content-center align-items-center row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+      <div class="content justify-content-center align-items-center row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
         <?php
           if (mysqli_num_rows($stmt) == 0){
             echo "<div class='alert alert-danger'>No records found.</div>";
           }
           foreach ($food as $dish) {
         ?>
-        <div class="card p-3">
+        <div class="card p-3 card-custom">
           <div class="top-div">
               <div class="border">
               <img src="<?php echo htmlspecialchars($dish['img_path']); ?>">

@@ -1,6 +1,6 @@
 :root {
-    --color: #ff7f50;
-    --border: 5px solid #ff7f50;
+  --color: #be9d09;
+  --border: 5px solid  #be9d09;
     --gray: #57606f;
     --bg: rgba(255, 255, 255, 0.3);
   }
@@ -13,10 +13,6 @@
     font-size: 34px;
     color: white;
     margin: 0;
-  }
-
-  .newsDISP {
-    background-color: var(--gray);
   }
 
   .nonedecor

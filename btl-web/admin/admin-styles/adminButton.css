@@ -10,10 +10,17 @@
 }
 
 :root {
-  --color: #ff7f50;
-  --border: 5px solid #ff7f50;
+  --color: #be9d09;
+  --border: 5px solid  #be9d09;
   --gray: #57606f;
   --bg: rgba(255, 255, 255, 0.3);
+}
+
+.bg{
+  background-color:#441a0a;
+}
+.dropdown-menu-custom{
+  background-color:#441a0a;
 }
 
 .text-right {
@@ -92,5 +99,8 @@
   color: var(--color);
 }
 .snippet {
+  color: var(--color);
+}
+.dropdown-item {
   color: var(--color);
 }

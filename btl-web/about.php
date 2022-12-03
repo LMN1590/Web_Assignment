@@ -20,6 +20,11 @@
   <title>Giới thiệu</title>
 </head>
 
+<style>
+  td li{
+    width:125px;
+  }
+</style>
 <body>
   <!-- nav bar --> 
   <div>
@@ -67,10 +72,6 @@
         <tr>
           <td><li>Tên</li></td>
           <td>: Nhà hàng TramkamVL</li></td>
-        </tr>
-        <tr>
-          <td><li>Tên viết tắt</li></td>
-          <td>: TramkamVL</li></td>
         </tr>
         <tr>
           <td><li>Trụ sở</li></td>

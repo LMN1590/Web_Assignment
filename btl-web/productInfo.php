@@ -25,7 +25,7 @@
       array_push($_SESSION["cart"], $id);
     }
     $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
-    header('location: productInfo.php?prod_id=' . $_POST['prod_id']);
+    header('location: productInfo.php?prod_id=' . $_GET["add"]);
     exit();
   }
 ?> 
@@ -152,7 +152,7 @@
                 }
               ?>
             </p>              
-            <a class="btn btn-dark" href="?add=<?php echo (htmlspecialchars($dish1['id'])); ?>">Thêm ngay</a>
+            <a class="btn btn-custom" href="?add=<?php echo (htmlspecialchars($dish1['id'])); ?>">Thêm ngay</a>
             <a href="productsList.php" class="btn btn-success">Trở về Danh mục sản phẩm</a>
             
             <form class="d-flex justify-content-left">

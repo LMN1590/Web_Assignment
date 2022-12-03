@@ -31,7 +31,7 @@
           <div class="search">
             <form method="post" action="index.php">
               <i class="fa fa-search"></i>
-              <input type="text" name="input-search" class="form-control" placeholder="Bạn đang thèm gì?">
+              <input type="text" name="input-search" class="form-control" placeholder="Bạn đang tìm kiếm gì?">
               <input type="submit" class="form-control btn btn-primary" name="submit-search" value="Tìm kiếm">
             </form>
           </div>

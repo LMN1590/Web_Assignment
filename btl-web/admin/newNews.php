@@ -7,11 +7,12 @@
       $name = $_POST['name'];
       $datetime = $_POST['datetime'];
       $content = $_POST['content'];
+      $body=$_POST['contentBody'];
 
-      $query2 = "INSERT INTO news (name, datetime, content) VALUES (?, ?, ?)";
+      $query2 = "INSERT INTO news(name,datetime,content,contentBody) VALUES (?, ?, ?, ?)";
       $stmt = $conn->prepare($query2);
 
-      $stmt->bind_param('sss', $name, $datetime, $content);
+      $stmt->bind_param('ssss', $name, $datetime, $content, $body);
       $stmt->execute();
       if ($_POST['submit'])
       {
@@ -52,24 +53,28 @@
       <h1>Thêm bài viết</h1>
     </div>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-      <table class='table table-hover table-responsive table-bordered'>
-        <tr>
+    <table class='table table-hover table-responsive table-bordered'>
+      <tr>
           <td>Tên bài viết</td>
-          <td><input type='text' name='name' class='form-control' required></td>
+          <td><input type='text' name='name' class='form-control' value="" required></td>
         </tr>
         <tr>
           <td>Ngày & giờ đăng bài viết</td>
-          <td><input type='datetime-local' name='datetime' class='form-control' required></td>
+          <td><input type='datetime-local' name='datetime' class='form-control' value="" required></td>
+        </tr>
+        <tr>
+          <td>Tiêu đề bài viết</td>
+          <td><input type='textarea' name='content' class='form-control' value="" required></td>
         </tr>
         <tr>
           <td>Nội dung bài viết</td>
-          <td><input type='textarea' name='content' class='form-control' required></td>
+          <td><textarea rows=10 type='textarea' name='contentBody' class='form-control' required></textarea></td>
         </tr>
         <tr>
           <td></td>
           <td>
-            <input type='submit' name='submit' value='Lưu' class='btn btn-primary' />
-            <a href='newsManagement.php' class='btn btn-danger'>Quay lại bảng bài viết</a>
+          <input type='submit' name='submit' value='Lưu' class='btn btn-primary'>
+          <a href='newsManagement.php' class='btn btn-danger'>Quay lại bảng tin tức</a>
           </td>
         </tr>
       </table>
