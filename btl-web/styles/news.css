@@ -122,3 +122,8 @@ body {
 {
   text-decoration: none;
 }
+
+.new-container{
+  padding:20px;
+  background-color: #e9d993;
+}

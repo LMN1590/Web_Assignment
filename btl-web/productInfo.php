@@ -25,7 +25,7 @@
       array_push($_SESSION["cart"], $id);
     }
     $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
-    header('location: productInfo.php?prod_id=' . $_POST['prod_id']);
+    header('location: productInfo.php?prod_id=' . $_GET["add"]);
     exit();
   }
 ?> 

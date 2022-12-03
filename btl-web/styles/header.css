@@ -43,6 +43,9 @@
 .dropdown-item {
   color: var(--color);
 }
-.btn-custom{
+.btn-custom-nav{
   background-color: #441a0a;
+}
+.dropdown-menu-custom{
+  background-color:#441a0a;
 }

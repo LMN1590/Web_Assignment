@@ -44,11 +44,11 @@
           </div>     
         </div>
   </div>
-<div class="container">
+<div class="container" style="margin-top:20px">
   <!--Section: News of the day-->
   <section class="border-bottom pb-4 mb-5">
-    <div class="row gx-5">
-      <div class="col-md-6 mb-4">
+    <div class="row new-container gx-5">
+      <div class="col-md-6 ">
         <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
           <a href="newsInfo.php?news_id=<?php echo htmlspecialchars($news[0]['id']); ?>">
           <img src="img/latest-news.png" class="img-fluid" />
@@ -56,7 +56,7 @@
           </a>
         </div>
       </div>
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6 ">
         <a href="newsInfo.php?news_id=<?php echo htmlspecialchars($news[0]['id']); ?>" class="minitext">
               <span class="badge bg-danger px-2 py-1 shadow-1-strong mb-3">Tin mới nhất</span>
               <h4><strong><?php echo $news[0]['name'];?></strong></h4>
@@ -76,14 +76,14 @@
   <!--Section: Content-->
   <section>
     
-    <div class="row gx-lg-5">
+    <div class="row  gx-lg-5">
     <?php for($j=1; $j<count($news);$j++)
       {?>
-      <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+      <div class="col-lg-4 col-md-12 new-container mb-lg-0">
         <!-- News block -->
         <div>
           <!-- Featured image -->
-          <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 mb-4"
+          <div class="bg-image hover-overlay shadow-1-strong ripple rounded-5 "
             data-mdb-ripple-color="light">
             <img src="" class="img-fluid" />
             <a href="#!">

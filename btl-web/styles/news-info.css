@@ -15,10 +15,6 @@
     margin: 0;
   }
 
-  .newsDISP {
-    background-color: var(--gray);
-  }
-
   .nonedecor
   {
     text-decoration: none;
