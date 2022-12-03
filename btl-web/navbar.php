@@ -55,7 +55,6 @@
       </div>
     </div>
   </div>
-      <!-- Icon dropdown -->
       <?php if (isset($_SESSION['user_id'])) { ?>
       <div class="dropdown col-sm-2">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="justify-content: right; align-items: right; padding-right: 15px">
@@ -64,11 +63,10 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
               <li><a class="dropdown-item" href="editProfile.php?id=<?php echo $_SESSION['user_id']; ?>">Chỉnh sửa thông tin</a></li> 
-              <?php
-                if ($_SESSION['admin']) echo "<li><a class='dropdown-item' href='admin/index.php'>Bảng điều khiển của Admin</a></li>";
-              ?>
-              <!-- <li><a class="dropdown-item" href="#">Cài đặt</a></li> -->
-              <!-- <li><a class="dropdown-item" href="profile.php">Tài khoản</a></li> -->
+              <?php if ($_SESSION['admin']) { ?>
+              <li><a class='dropdown-item' href='admin/index.php'>Bảng điều khiển của Admin</a></li>
+              <?php } 
+              ?><li><a class="dropdown-item" href="profile.php">Tài khoản</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
           </ul>
@@ -87,7 +85,8 @@
           </ul>
         </div>
       </div>
-      <?php } ?>  
-  </nav>
+      <?php } 
+      ?>
+    </nav>
 </body>
 </html>

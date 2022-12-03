@@ -28,11 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `news` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
   `datetime` datetime NOT NULL,
   `content` text NOT NULL,
-  `contentBody` text NOT NULL
+  `contentBody` text NOT NULL,
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -40,8 +41,8 @@ CREATE TABLE `news` (
 --
 
 INSERT INTO `news` (`id`, `name`, `datetime`, `content`,`contentBody`) VALUES
-(0, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Bình Thạnh','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.\n*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.'),
-(1, 'Địa điểm mới', '2022-06-15 00:00:00', 'Mở chi nhánh mới ở Bình Thạnh','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.');
+(0, 'Địa điểm mới', '2022-12-01 11:00:00', 'Mở chi nhánh mới ở quận 10','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.\n*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.'),
+(1, 'Địa điểm mới', '2022-12-02 17:30:00', 'Mở chi nhánh mới ở thị xã Dĩ An','*\tHôm nay ngày lành tháng tốt, xin phép thông báo với bà con là một chi nhánh mới của cửa hàng chúng tôi sẽ được mở tại quận để có thể phục vụ tốt hơn cho mọi người.');
 
 -- --------------------------------------------------------
 
@@ -74,12 +75,13 @@ INSERT INTO `news_comments` (`id`, `user_id`, `datetime`, `content`, `news_id`,`
 --
 
 CREATE TABLE `product` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` float UNSIGNED NOT NULL,
   `img_path` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0: hết hàng, 1: còn hàng'
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0: hết hàng, 1: còn hàng',
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -92,7 +94,13 @@ INSERT INTO `product` (`id`, `name`, `description`, `price`, `img_path`, `status
 (2, 'Cơm Trứng', 'Cơm và trứng chiên', '324', 'img/product-list/rice-cata.jpg', 1),
 (3, 'Rượu Sake', 'Rượu Sake nhập khẩu từ Nhật Bản 100%', '950', 'img/product-list/beverage-cata.jpg', 1),
 (4, 'Tonkotsu Ramen', 'Ramen cùng thịt lợn', '340', 'img/product-list/ramen-cata.jpg', 1),
-(5, 'Sushi', 'Sushi 7 món', '240', 'img/product-list/sushi-cata.jpg', 1);
+(5, 'Sushi', 'Sushi 7 món', '240', 'img/product-list/sushi-cata.jpg', 1),
+(6, 'Sukiyaki', 'Sukiyaki thực chất là một món lẩu, trong đó thịt và rau được hầm trong nồi sắt.', 300, 'img/product-list/sukiyaki.jpg', 1),
+(7, 'Cơm cà ri', 'Món ăn này được chế biến từ thịt và rau kết hợp với hương thơm của bột cà ri, sau đó đem hầm và ăn với cơm', 430, 'img/product-list/curry-rice.jpg', 1),
+(8, 'Mì soba', 'Một món mì làm từ bột kiều mạch ăn với nước tương và nước sốt đường, có đồ ăn kèm như trứng, tempura,...', 200, 'img/product-list/soba.jpg', 1),
+(9, 'Karaage', 'Karaage là thịt gà được ướp với nước tương, muối và một số loại gia vị khác nhau, tẩm bột và chiên trong dầu', 150, 'img/product-list/karaage.jpg', 1),
+(10, 'Lẩu shabu-shabu', 'Một món ăn trong đó thịt và rau được đun sôi trong nước được chế biến từ tảo konbu và các thành phần khác', 700, 'img/product-list/shabushabu.jpg', 1),
+(11, 'Râu mực nướng phết bơ lạc', 'Món ăn siêu đặc biệt của quán ;)', 999, 'img/product-list/squid.jpg', 1);
 
 
 -- --------------------------------------------------------
@@ -131,7 +139,7 @@ INSERT INTO `prod_comments` (`id`, `user_id`, `datetime`, `content`, `prod_id`,`
 --
 
 CREATE TABLE `user` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `full_name` varchar(100) NOT NULL,
@@ -140,7 +148,8 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: user, 1: admin'
+  `admin` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: user, 1: admin',
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -148,50 +157,20 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `full_name`, `sex`, `birthday`, `email`, `phone`, `address`, `admin`) VALUES
-(0, 'user', 'iwannafly', 'Edogawa Conan', 'Nam', '2022-06-16', 'conanmeitantei@gmail.com', '07258258758', 'asgz14hs', 0),
-(1, 'user2', 'TMD', 'Tokoyami Towa', 'Nữ', '2022-04-28', 'everlastingdarkness@gmail.com', '07258258758', 'ahudjhvkusg', 0),
-(2, 'user3', 'stellarstellar', 'Hoshimachi Suisei', 'Nữ', '2022-04-23', 'suiseinogotokuarawaretasutaanogenseki@gmail.com', '04684548214', 'asgz14hs', 0),
-(3, 'kamisamada', 'startend', 'staffA', 'Nữ', '2022-01-26', 'achan@gmail.com', '46879213548', 'grgarhhs', 1),
-(4, 'user4', 'whateverusay', 'Join Cena', 'Nam', '1997-01-24', 'jsmith@sample.com', '4682135468', 'WJDJTJAdjdtjykjyr', 0);
+(0, 'LMN', 'nghiale', 'Lê Minh Nghãi', 'Nam', '2002-01-01', 'leminhnghai@gmail.com', '0123456789', 'BK Q10', 0),
+(1, 'NHD', 'danhnguyen', 'Nguyễn Hữu Danh', 'Nam', '2002-08-15', 'adudarkwa@gmail.com', '0567891478', 'Tại nhà', 1),
+(2, 'NHTH', 'hungnguyen', 'Nguyễn Huỳnh Tuấn Hưng', 'Nam', '2002-02-02', 'bantramkam@gmail.com', '04684548214', 'Vương quốc Bình Chánh', 0),
+(3, 'admin', 'admin', 'Admin cute pho mai que', 'Nữ', '2003-07-25', 'adminchan@gmail.com', '1900190025', 'Khum biết', 1),
+(4, 'TTN', 'nhantran', 'Trần Thiện Nhân', 'Nam', '2001-06-14', 'tatcalatainhan@hcmut.edu.vn', '9999999999', 'Khum', 0);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `news_comments`
---
-ALTER TABLE `news_comments`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `prod_comments`
---
-ALTER TABLE `prod_comments`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
@@ -208,25 +187,25 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `news_comments`
 --
 ALTER TABLE `news_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prod_comments`
 --
 ALTER TABLE `prod_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
