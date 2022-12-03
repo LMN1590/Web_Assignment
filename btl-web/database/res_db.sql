@@ -28,11 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `news` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
   `datetime` datetime NOT NULL,
   `content` text NOT NULL,
-  `contentBody` text NOT NULL
+  `contentBody` text NOT NULL,
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -74,12 +75,13 @@ INSERT INTO `news_comments` (`id`, `user_id`, `datetime`, `content`, `news_id`,`
 --
 
 CREATE TABLE `product` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `price` float UNSIGNED NOT NULL,
   `img_path` text NOT NULL,
-  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0: hết hàng, 1: còn hàng'
+  `status` tinyint(1) NOT NULL DEFAULT 1 COMMENT '0: hết hàng, 1: còn hàng',
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -137,7 +139,7 @@ INSERT INTO `prod_comments` (`id`, `user_id`, `datetime`, `content`, `prod_id`,`
 --
 
 CREATE TABLE `user` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED NOT NULL auto_increment,
   `username` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `full_name` varchar(100) NOT NULL,
@@ -146,7 +148,8 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `admin` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: user, 1: admin'
+  `admin` tinyint(1) NOT NULL DEFAULT 0 COMMENT '0: user, 1: admin',
+  primary key(`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -165,39 +168,9 @@ INSERT INTO `user` (`id`, `username`, `password`, `full_name`, `sex`, `birthday`
 --
 
 --
--- Indexes for table `news`
---
-ALTER TABLE `news`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `news_comments`
---
-ALTER TABLE `news_comments`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
--- Indexes for table `prod_comments`
---
-ALTER TABLE `prod_comments`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `id` (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
@@ -214,25 +187,25 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `news_comments`
 --
 ALTER TABLE `news_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `prod_comments`
 --
 ALTER TABLE `prod_comments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
