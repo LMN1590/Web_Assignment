@@ -42,6 +42,15 @@
               <li class="nav-item">
                 <a class="nav-link" href="newsList.php">&nbsp;&nbsp;Tin tức&nbsp;&nbsp;</a>
               </li>
+              <?php
+                if (isset($_SESSION['user_id'])) {
+                  echo '
+                    <li class="nav-item">
+                      <a class="nav-link" href="cart.php">&nbsp;&nbsp;Giỏ hàng&nbsp;&nbsp;</a>
+                    </li>
+                  ';
+                }
+              ?>
           </ul>
       </div>
     </div>
