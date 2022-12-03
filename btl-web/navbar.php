@@ -17,7 +17,7 @@
   <nav class="my-navbar-logo navbar navbar-expand-xl navbar-dark bg-dark">
       <div class="my-container container-fluid justify-content-center">
         <a class="navbar-brand" href="index.php">
-            <img src="img/logo-name.png" width="120" height="120" class="d-inline-block align-top" alt="logo">
+            <img src="img/hung.png" width="120" height="120" class="d-inline-block align-top" alt="logo">
         </a>
       </div>
   </nav>    
@@ -58,7 +58,7 @@
       <?php if (isset($_SESSION['user_id'])) { ?>
       <div class="dropdown col-sm-2">
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false" style="justify-content: right; align-items: right; padding-right: 15px">
-            <img src="img/logo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
+            <img src="img/nghia-ava.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
             <span class="d-none d-sm-inline mx-1"><?php echo $_SESSION['username'];?></span>
           </a>
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

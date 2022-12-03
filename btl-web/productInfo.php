@@ -192,7 +192,7 @@
                 <form id="cmt" action="productInfo.php" method="post">
                   <div class="d-flex flex-start w-100">
                     <img class="rounded-circle shadow-1-strong me-3"
-                      src="img/logo.png" alt="avatar" width="40"
+                      src="img/nghia-ava.png" alt="avatar" width="40"
                       height="40" />
                     <div class="form-outline w-100">
                       <textarea class="form-control" id="textAreaExample" rows="4"
@@ -220,7 +220,7 @@
               ?>
               <div class="card-body">
                 <div class="d-flex flex-start align-items-center">
-                  <img class="rounded-circle shadow-1-strong me-3" src="img/logo.png" alt="avatar" width="60" height="60" />
+                  <img class="rounded-circle shadow-1-strong me-3" src="img/nghia-ava.png" alt="avatar" width="60" height="60" />
                   <div>
                     <h6 class="fw-bold text-primary mb-1">
                       <?php 
@@ -256,7 +256,7 @@
               <div class="card-body">
                 <div class="d-flex flex-start align-items-center">
                   <img class="rounded-circle shadow-1-strong me-3"
-                    src="img/logo.png" alt="avatar" width="60"
+                    src="img/nghia-ava.png" alt="avatar" width="60"
                     height="60" />
                   <div>
                     <h6 class="fw-bold text-primary mb-1">
