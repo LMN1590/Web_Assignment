@@ -186,6 +186,8 @@
         <div class="row d-flex justify-content-center">
           <div class="col-md-12 col-lg-10 col-xl-8">
             <div class="card">
+              <?php if ($_SESSION['admin'] == 0) {
+              ?>
               <div class="card-header py-3 border-0" style="background-color: #f8f9fa;">
                 <form id="cmt" action="productInfo.php" method="post">
                   <div class="d-flex flex-start w-100">
@@ -205,6 +207,8 @@
                   </div>
                 </form>
               </div>
+              <?php }
+              ?>
               <?php 
                 if($cmt_cnt == 0)
                 {
