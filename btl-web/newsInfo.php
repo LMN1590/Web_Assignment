@@ -124,7 +124,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
               <div class="card">
-                <?php if ($_SESSION['admin'] == 0) {
+                <?php if (isset($_SESSION['admin']) && $_SESSION['admin'] == 0) {
                 ?> 
                 <div class="card-header py-3 border-0" style="background-color: #f8f9fa;">
                   <form action="" method="post">
@@ -152,7 +152,34 @@
                   {
                     echo "Chưa có bình luận nào";
                   }
-                  if (isset($_SESSION['admin']) == false);
+                  if (isset($_SESSION['admin']) == false) {
+                    foreach($cmts as $comment) {
+                ?>
+                <div class="card-body">
+                  <div class="d-flex flex-start align-items-center">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="img/nghia-ava.png" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold text-primary mb-1">
+                        <?php 
+                          $key = array_search($comment['user_id'], array_column($users, 'id'));
+                          echo ($users[$key]['username']);
+                        ?>
+                      </h6>
+                      <p class="text-muted small mb-0">
+                        <?php echo $comment['datetime'];?>
+                      </p>
+                    </div>
+                  </div>
+
+                  <p class="mt-3 mb-4 pb-2">
+                    <?php echo htmlspecialchars($comment['content']);?>
+                  </p>
+                </div>
+                <?php      
+                    }
+                  }
                   else if ($_SESSION['admin'] == 1){
                     foreach($cmts as $comment){
                 ?>
