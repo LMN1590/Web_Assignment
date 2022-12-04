@@ -19,8 +19,8 @@
       else {
         $query3 = "UPDATE product SET name = ?, description = ?, price = ?, img_path = ?, status = ? WHERE id = ?";
         $stmt = $conn->prepare($query3);
-
-        $tmp = $_GET['img_path'];
+        $tmp = $_POST['img_path_pre'];
+        
         if ($img_path == "img/product-list/")
           $stmt->bind_param('ssisii', $name, $description, $price, $tmp, $status, $id);
         else $stmt->bind_param('ssisii', $name, $description, $price, $img_path, $status, $id);
@@ -29,8 +29,8 @@
 
         if ($_POST['submit']) {
           if ($img_path == "img/product-list/")
-            echo "<script>window.location.href='editProduct.php?id=$id&name=$name&description=$description&price=$price&img_path=$tmp&status=$status'; alert('Chỉnh sửa thành công!')</script>";
-          else echo "<script>window.location.href='editProduct.php?id=$id&name=$name&description=$description&price=$price&img_path=$img_path&status=$status'; alert('Chỉnh sửa thành công!')</script>";
+            echo "<script>window.location.href='editProduct.php?id=$id'; alert('Chỉnh sửa thành công!')</script>";
+          else echo "<script>window.location.href='editProduct.php?id=$id'; alert('Chỉnh sửa thành công!')</script>";
         }
       }
       mysqli_close($conn);
@@ -99,7 +99,11 @@
         </tr>
         <tr>
           <td>Hình ảnh mới sản phẩm<br>(để trống nếu không thay đổi)</td>
-          <td><input type="file" name="img_path" class='form-control' value="<?php echo $product['img_path']?>" onchange="ValidateSingleInput(this);" accept=".png, .jpg, .jpeg, .gif"></td>
+          
+          <td>
+          <input type="hidden" name="img_path_pre" value="<?php echo $product['img_path']?>">
+            <input type="file" name="img_path" class='form-control' value="<?php echo $product['img_path']?>" onchange="ValidateSingleInput(this);" accept=".png, .jpg, .jpeg, .gif">
+          </td>
         </tr>
         <tr>
           <td>Trạng thái (0: hết hàng, 1: còn hàng)</td>

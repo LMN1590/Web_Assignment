@@ -29,7 +29,7 @@
         $sex, $birthday, $email, $phone, $address, $id);
         $stmt->execute();
         if ($_POST['submit']) {
-          echo "<script>window.location.href='editMember.php?id=$id&username=$username&password=$password&full_name=$fullname&sex=$sex&birthday=$birthday&email=$email&phone=$phone&address=$address'; alert('Chỉnh sửa người dùng thành công!')</script>";
+          echo "<script>window.location.href='editMember.php?id=$id'; alert('Chỉnh sửa người dùng thành công!')</script>";
         }
       }
       mysqli_close($conn);

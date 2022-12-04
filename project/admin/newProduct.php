@@ -7,9 +7,9 @@
       $name = test_input($_POST['name']);
       $description = test_input($_POST['description']);
       $price = test_input($_POST['price']);
-      $img_path = test_input("img/product-list/" . $_POST['img_path']);
+      $img_path = "img/product-list/" . $_FILES['img_path']['name'];
       $status = test_input($_POST['status']);
-
+      echo "<script> alert(\"" . $_FILES['img_path']['tmp_name'] . "\");</script>";
       if (!preg_match("/^[0-9a-zA-Z-'.,()*!<>:\/áàảãạăắặẳâấầẩẫậéèẻẽẹêếềểễệíìỉĩịóòỏõọôốồổỗộơớờởỡợúùủũụưứừửữựđÁÀẢÃẠĂẮẶẲÂẤẦẨẪẬÉÈẺẼẸÊẾỀỂỄỆÍÌỈĨỊÓÒỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÚÙỦŨỤƯỨỪỬỮỰĐ ]*$/", $name) ||
           !preg_match("/^[0-9,.]*$/", $price) ||
           !preg_match('/\.(jpg|png|jpeg)$/', $img_path) ||
@@ -25,7 +25,7 @@
         if ($_POST['submit']) {
           echo "<script>window.location.href='productManagement.php'; alert('Tạo sản phẩm mới thành công!')</script>";
         }
-        move_uploaded_file($_POST['img_path'], '../img/product-list/' . $_POST['img_path']);
+        move_uploaded_file($_FILES['img_path']['tmp_name'], '../img/product-list/' . $_FILES['img_path']['name']);
       }
       mysqli_close($conn);
     }   
@@ -63,7 +63,7 @@
     <div class="page-header">
       <h1>Thêm sản phẩm</h1>
     </div>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" enctype="multipart/form-data">
       <table class='table table-hover table-responsive table-bordered'>
         <tr>
           <td>Tên sản phẩm</td>
