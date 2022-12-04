@@ -49,6 +49,17 @@
         echo var_dump( $_SESSION["quantity"]);
         header("Location: cart.php");
     }
+
+    //Payment
+    if ( isset($_GET["pay"]) ) {
+        if ($_GET["pay"] == 'true') {
+            unset($_SESSION["quantity"]);
+            unset($_SESSION["total"]);
+            unset($_SESSION["cart"]);
+        }
+        header("Location:cart.php");
+        exit();
+    }
 ?> 
 
 <!DOCTYPE html>
@@ -72,7 +83,17 @@
   <!-- nav bar --> 
   <div>
     <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."navbar.php");?>
+    include($IPATH."navbar.php");
+    $query1 = 'SELECT id, price FROM product where id in ('. implode(",",$_SESSION["cart"]) .') ORDER BY id';
+    $res = mysqli_query($conn, $query1);
+    $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
+    $row_cnt = $res->num_rows;
+    mysqli_free_result($res);
+    $totalCost = 0;
+    foreach ($food as $dish) {
+        $totalCost = $totalCost + $dish["price"]*$_SESSION["quantity"][$dish["id"]];
+    }
+    ?>
   </div>
   <!-- end nav bar -->
   <!--Main layout-->
@@ -80,9 +101,9 @@
   </div>
   <div class="container" style="min-height: 200px;">
             <div class="row border-bottom border-dark" style="margin-top: 100px;">
-                <div class="col-6"><h2>GIỎ HÀNG</h2></div>
-                
-                <div class="col-6"><h2>Tổng sản phẩm: <?php echo htmlspecialchars(count($_SESSION["cart"]) - 1); ?></h2></div>
+                <div class="col-4"><h2>GIỎ HÀNG</h2></div>
+                <div class="col-4"><h2>Tổng món: <?php echo htmlspecialchars(count($_SESSION["cart"]) - 1); ?></h2></div>
+                <div class="col-4"><h2>Tổng tiền: <?php echo htmlspecialchars($totalCost.'000đ'); ?></h2></div>
             </div>
             <div class="row p-3 border-bottom border-dark">
                 <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
@@ -93,7 +114,7 @@
                     <h4>Số lượng</h4>
                 </div>
                 <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center">
-                    <h4>Giá tiền</h4>
+                    <h4>Giá</h4>
                 </div>
                 <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center"></div>
             </div>
@@ -129,7 +150,7 @@
                         </div>
                     </div>
                     <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 d-flex justify-content-center">
-                        <p><?php echo(htmlspecialchars($dish['price'])); ?>000</p>
+                        <p><?php echo(htmlspecialchars($dish['price'])); ?>000đ</p>
                     </div>
                     <div class="col-lg-1 col-md-1 col-md-1 col-xs-1 ">
                         <a class="btn btn-primary" href="?delete=<?php echo(htmlspecialchars($dish['id'])); ?>">Xóa</a>
@@ -151,7 +172,30 @@
                         <input type="text" name="update" value="true" hidden>
                         <button type="submit" class="btn btn-primary" >Cập nhật</button>
                         <a type="button" class="btn btn-primary" href="?reset=true" style="margin-left:20px;">Xóa bỏ</a>
-                        <a type="button" class="btn btn-primary" style="margin-left:20px;">Thanh toán</a>
+                        <!-- Button trigger modal -->
+                        <a type="button" class="btn btn-primary" style="margin-left:20px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Thanh toán
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Bạn muốn thanh toán?</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            Tổng món: <?php echo htmlspecialchars(count($_SESSION["cart"]) - 1);?><br/>
+                            Tổng tiền: <?php echo htmlspecialchars($totalCost.'000đ'); ?>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                <a type="button" class="btn btn-primary" href="?reset=true">Xác nhận</a>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
                     </div>
                 </div>
             </form>
