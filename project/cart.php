@@ -83,7 +83,7 @@
   <!-- nav bar --> 
   <div>
     <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
-    include($IPATH."\\navbar.php");?>
+    include($IPATH."\\navbar.php");
     $query1 = 'SELECT id, price FROM product where id in ('. implode(",",$_SESSION["cart"]) .') ORDER BY id';
     $res = mysqli_query($conn, $query1);
     $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
