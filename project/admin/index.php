@@ -30,8 +30,8 @@
   ?>
   <!-- nav bar --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/admin/";
-    include($IPATH."navbar.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/admin/";
+    include($IPATH."\\navbar.php");?>
   </div>
   <!-- end nav bar --> 
     <a href="memberManagement.php" style="text-decoration: none"><div class="p-3 mb-2 bg-primary bg-gradient text-white">Quản lý thành viên</div></a>

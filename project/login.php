@@ -20,8 +20,8 @@
 <body>
   <!-- Start Nav bar --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."navbar.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
+    include($IPATH."\\navbar.php");?>
   </div>
   <!-- End Nav bar --> 
   <!-- Start retrieving data -->

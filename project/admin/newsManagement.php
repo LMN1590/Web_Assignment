@@ -26,8 +26,8 @@
 
   <!-- nav bar --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/admin/";
-    include($IPATH."navbar.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/admin/";
+    include($IPATH."\\navbar.php");?>
   </div>
   <!-- end nav bar --> 
     <form method="post" action="newsManagement.php">

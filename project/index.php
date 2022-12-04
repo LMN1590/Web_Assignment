@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,8 +21,8 @@
 <body>
   <!-- nav bar --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."navbar.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
+    include($IPATH."\\navbar.php");?>
   </div>
   <!-- end nav bar --> 
   <!-- main content --> 
@@ -40,34 +41,36 @@
     <div class="container-img">
       <h1 class="text-center">KHÁM PHÁ DANH MỤC SẢN PHẨM<br><br></h1>        
       <div class="row justify-content-center">
-        <div class="col-3">
-          <a href="productInfo.php?prod_id=4">
-            <img src="img/food-img/ramen-cata.jpg" alt="" class="img-fluid img-curve">
+        <?php
+          require_once('config/config.php');
+          //select data
+          $query = "SELECT * FROM product ORDER BY id";
+          $res = mysqli_query($conn, $query);
+          $food = mysqli_fetch_all($res, MYSQLI_ASSOC);
+          $row_cnt = $res->num_rows;
+          mysqli_free_result($res);
+          if ($row_cnt == 0){
+            echo "<div class='alert alert-danger'>No records found.</div>";
+          }
+          for ($i = 0; $i < 4;$i++) {
+        ?>
+        <div class="col-3" style="height:400px;">
+          <a href="productInfo.php?prod_id=<?php echo htmlspecialchars($food[$i]['id']);?>">
+            <img style="height:100%;" src="<?php echo htmlspecialchars($food[$i]['img_path']); ?>" alt="" class="img-fluid img-curve">
           </a>
         </div>
-        <div class="col-3">
-          <a href="productInfo.php?prod_id=5">
-            <img src="img/food-img/sushi-cata.jpg" alt="" class="img-fluid img-curve">
-          </a>
-        </div>
-        <div class="col-3">
-          <a href="productInfo.php?prod_id=3">
-            <img src="img/food-img/beverage-cata.jpg" alt="" class="img-fluid img-curve">
-          </a>
-        </div>
-        <div class="col-3">
-          <a href="productInfo.php?prod_id=2">
-            <img src="img/food-img/rice-cata.jpg" alt="" class="img-fluid img-curve">
-          </a>
-        </div>
+        <?php 
+          }
+          mysqli_close($conn);
+        ?>
       </div>
     </div>
   </div>
   <!-- end .main-content -->    
   <!-- footer --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."footer.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
+    include($IPATH."\\footer.php");?>
   </div>
   <!-- end footer --> 
 </body>

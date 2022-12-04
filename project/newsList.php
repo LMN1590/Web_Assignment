@@ -28,8 +28,8 @@
 <body>
   <!-- nav bar --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."navbar.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
+    include($IPATH."\\navbar.php");?>
   </div>
   <!-- end nav bar -->
   <!--Main layout-->
@@ -127,8 +127,8 @@
 <!--Main layout-->
   <!-- footer --> 
   <div>
-    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"]."/btl-web/";
-    include($IPATH."footer.php");?>
+    <?php $IPATH = $_SERVER["DOCUMENT_ROOT"];
+    include($IPATH."\\footer.php");?>
   </div>
   <!-- end footer --> 
   
