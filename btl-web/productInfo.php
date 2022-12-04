@@ -20,13 +20,19 @@
 
   //Add
   if ( isset($_GET["add"]) ) {
-    $id = $_GET["add"];
-    if (!in_array($id, $_SESSION["cart"])) {
-      array_push($_SESSION["cart"], $id);
+    if (isset($_SESSION['user_id'])) {
+      $id = $_GET["add"];
+      if (!in_array($id, $_SESSION["cart"])) {
+        array_push($_SESSION["cart"], $id);
+      }
+      $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
+      header("Location:productsList.php");
+      exit();
     }
-    $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
-    header('location: productInfo.php?prod_id=' . $_GET["add"]);
-    exit();
+    else {
+      header("Location:login.php");
+      exit();
+    }
   }
 ?> 
 
