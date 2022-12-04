@@ -2,7 +2,7 @@
   $servername = "localhost:3307";
   $username = "root";
   $password = "rootpassword";
-  $dbname = "res_db";
+  $dbname = "webass";
 
   $conn = mysqli_connect($servername, $username, $password, $dbname);
 

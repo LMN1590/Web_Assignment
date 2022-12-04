@@ -1,12 +1,45 @@
+
 <?php
+  //initialize sessions
+  session_start();
+
   require_once('config/config.php');
   //select data
+  $query = "SELECT * FROM product ORDER BY id";
+  $res = mysqli_query($conn, $query);
+  $row_cnt = $res->num_rows;
+  mysqli_free_result($res);
+
   $content = $_GET['content'];
   $query = "SELECT * FROM product WHERE name LIKE '%".$content."%' ORDER BY id";
   $stmt = mysqli_query($conn, $query);
   $food = mysqli_fetch_all($stmt, MYSQLI_ASSOC);
-?> 
+  
 
+  //Load up session for cart
+  if ( !isset($_SESSION["cart"]) ) {
+    $_SESSION["cart"] = array(-1);
+    for ($i=0; $i< $row_cnt; $i++) {
+      $_SESSION["quantity"][$i] = 0;
+    }
+  }
+  //Add
+  if ( isset($_GET["add"]) ) {
+    if (isset($_SESSION['user_id'])) {
+      $id = $_GET["add"];
+      if (!in_array($id, $_SESSION["cart"])) {
+        array_push($_SESSION["cart"], $id);
+      }
+      $_SESSION["quantity"][$id] = $_SESSION["quantity"][$id] + 1;
+      header("Location:productsList.php");
+      exit();
+    }
+    else {
+      header("Location:login.php");
+      exit();
+    }
+  }
+?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,22 +87,22 @@
           foreach ($food as $dish) {
         ?>
         <div class="card p-3 card-custom">
-          <div class="top-div">
+          <div class="top-div" href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>">
               <div class="border">
               <img src="<?php echo htmlspecialchars($dish['img_path']); ?>">
               </div>
               <span style="width: auto; padding: 0 10px 0 10px"><?php echo htmlspecialchars($dish['price']); ?>K</span>
+              <a href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>" class="stretched-link"></a>
           </div>
-          <div class="bottom-div">
+          <div class="bottom-div" href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>">
               <h3><?php echo htmlspecialchars($dish['name']); ?></h3>
               <p><?php echo htmlspecialchars($dish['description']); ?></p>
+                <a class="btn btn-custom" href="?add=<?php echo(htmlspecialchars($dish['id'])); ?>">Thêm ngay</a>
           </div>
           <div class="last-section">
               <div class="last-div">
                 <i class="fa fa-comment-o"></i>
               </div>
-              <a href="productInfo.php?prod_id=<?php echo htmlspecialchars($dish['id']);?>" class="stretched-link">
-              </a>
           </div>
         </div>
         <?php 

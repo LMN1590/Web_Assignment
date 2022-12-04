@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- CSS -->
   <link rel="stylesheet" href="styles/product-style.css">
-  <title>Sản phẩm</title>
+  <title>Tin tức</title>
 </head>
 
 <body>
@@ -35,9 +35,14 @@
   </div>
   <!-- end nav bar --> 
   <div class="displayProd ">
-      <div class=" site-cata height d-flex justify-content-center align-items-center">
+      <div class=" site-cata news-cata height d-flex justify-content-center align-items-center">
         <div class="col-md-8">
           <div class="search">
+            <form method="post" action="index.php">
+              <i class="fa fa-search"></i>
+              <input type="text" name="input-search" class="form-control" placeholder="Tìm kiếm tin tức">
+              <input type="submit" class="form-control btn btn-primary" name="news-search" value="Tìm kiếm">
+            </form>
           </div>     
         </div>
       </div>

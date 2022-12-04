@@ -92,7 +92,7 @@
         </tr>
         <tr>
           <td>Sinh nhật</td>
-          <td><input type='date' name='birthday' class='form-control' min="1912-01-01" max="2012-12-31" required></td>
+          <td><input type='date' name='birthday' class='form-control' min="1912-01-01" required></td>
         </tr>
         <tr>
           <td>Email</td>

@@ -15,10 +15,10 @@
         echo "<div class='alert alert-danger'>Input không hợp lệ!</div>";
       }
       else {
-        $query2 = "INSERT INTO news_comments (user_id, datetime, content, news_id) VALUES (?, ?, ?, ?)";;
+        $query2 = "INSERT INTO news_comments (user_id, datetime, content, news_id, num_like) VALUES (?, ?, ?, ?, ?)";;
         $stmt = $conn->prepare($query2);
-  
-        $stmt->bind_param('issi', $user_id, $datetime, $content, $news_id);
+        $defaultLike = 0;
+        $stmt->bind_param('issii', $user_id, $datetime, $content, $news_id,$defaultLike);
         $stmt->execute();
         if ($_POST['submit']) {
           echo "<script>window.location.href='newsCommentManagement.php'; alert('Tạo mới bình luận thành công!')</script>";
