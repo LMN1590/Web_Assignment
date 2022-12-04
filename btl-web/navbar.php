@@ -66,8 +66,7 @@
               <?php if ($_SESSION['admin']) { ?>
               <li><a class='dropdown-item' href='admin/index.php'>Bảng điều khiển của Admin</a></li>
               <?php } 
-              ?><li><a class="dropdown-item" href="profile.php">Tài khoản</a></li>
-              <li><hr class="dropdown-divider"></li>
+              ?><li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="logout.php">Đăng xuất</a></li>
           </ul>
       </div>
