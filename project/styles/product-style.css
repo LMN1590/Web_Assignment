@@ -1,0 +1,184 @@
+/* fonts  */
+@import url("https://fonts.googleapis.com/css?family=Abel|Aguafina+Script|Artifika|Athiti|Condiment|Dosis|Droid+Serif|Farsan|Gurajada|Josefin+Sans|Lato|Lora|Merriweather|Noto+Serif|Open+Sans+Condensed:300|Playfair+Display|Rasa|Sahitya|Share+Tech|Text+Me+One|Titillium+Web");
+
+:root {
+  --color: #be9d09;
+  --border: 5px solid  #be9d09;
+  --gray: #57606f;
+  --bg: rgba(255, 255, 255, 0.3);
+}
+
+main {
+  background-color: black;
+}
+
+.my-btn {
+  background-color: var(--color);
+}
+
+.site-cata {
+  background-image: url(../img/site-name/prod-page.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 9% 8%;
+  background-size: cover;
+  max-width: 100%;
+  height: 300px;
+  border-bottom: var(--border);
+}
+.news-cata{
+  background-image: url(../img/site-name/news-page.jpg);
+}
+/*search*/
+
+
+.search {
+  position: relative;
+  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
+}
+
+.search input {
+  height: 60px;
+  text-indent: 25px;
+  border: 2px solid #d6d4d4;
+}
+
+.search input:focus {
+  box-shadow: none;
+  border: 2px solid var(--color);
+}
+
+.search .fa-search {
+  position: absolute;
+  top: 20px;
+  left: 16px;
+}
+
+.search button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  height: 50px;
+  width: 110px;
+  background: var(--color);
+}
+
+.card {
+  height: 400px;
+  width: 310px;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 10px;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  margin: 20px;
+}
+
+.top-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.top-div .border {
+  width: 100%;
+  height: 200px;
+}
+.top-div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.top-div span {
+  height: 28px;
+  width: 60px;
+  background-color: var(--color);
+  color: #fff;
+  position: absolute;
+  top: 185px;
+  left: 20px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+.bottom-div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.bottom-div p {
+  font-size: 13px;
+  color: #000000;
+}
+.last-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 20px;
+}
+
+.fa-comment-o {
+  font-size: 25px;
+  color: blue;
+  margin-left: 10px;
+}
+
+.buttons button {
+  height: 30px;
+  width: 80px;
+  color: var(--color);
+  border: 2px solid var(--color);
+  background-color: #fff;
+  font-size: 13px;
+  border-radius: 3px;
+  transition: all 0.5s;
+}
+.buttons:hover button {
+  color: var(--color);
+  background-color: black;
+}
+
+h1 {
+  font-family: "Segoe UI Black", sans-serif;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  font-size: 34px;
+  color: #344055;
+  margin: 0;
+}
+
+.productDISP {
+  background-color: var(--color);
+}
+
+.commentDISP {
+  background-color: black;
+  color: white;
+}
+.stat-ok {
+  color: green;
+  font-weight: bold;
+}
+
+.stat-fail {
+  color: red;
+  font-weight: bold;
+}
+
+.link{
+  text-decoration: none;
+}
+.btn-custom{
+  background-color: #a57460;
+}
+.card-custom{
+  background-color: #eca98e;
+}
+.content{
+  margin-top: 20px;
+}
