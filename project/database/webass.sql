@@ -44,7 +44,7 @@ CREATE TABLE `user` (
   `phone` varchar(15) NOT NULL,
   `address` varchar(255) NOT NULL,
   `admin` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0: user, 1: admin'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `user`
@@ -59,7 +59,7 @@ CREATE TABLE `news` (
   `datetime` datetime NOT NULL,
   `content` text NOT NULL,
   `contentBody` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `news`
@@ -79,7 +79,7 @@ CREATE TABLE `news_comments` (
   `content` text NOT NULL,
   `news_id` int UNSIGNED NOT NULL,
   `num_like` int NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 --
 -- Dumping data for table `news_comments`
 --
@@ -99,7 +99,7 @@ CREATE TABLE `product` (
   `price` float UNSIGNED NOT NULL,
   `img_path` text NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '0: hết hàng, 1: còn hàng'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 --
 -- Dumping data for table `product`
@@ -119,7 +119,7 @@ CREATE TABLE `prod_comments` (
   `content` text NOT NULL,
   `prod_id` int UNSIGNED NOT NULL,
   `num_like` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ;
 
 
 --
